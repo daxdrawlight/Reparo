@@ -17,7 +17,7 @@
 				<label for="password">Password</label>
 			</div>
 			<div class="section"></div>
-			@include ('layouts.errors')
+			@include ('layouts.partials.errors')
 			<div class="section"></div>
               <button class="btn waves-effect waves-light primary" type="submit" name="action">Prijavite se</button>
 		</div>

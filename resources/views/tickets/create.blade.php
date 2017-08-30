@@ -54,7 +54,7 @@
 		</div>
 </div></div>
 	</form>
-@include ('layouts.errors')
+@include ('layouts.partials.errors')
 
 <!-- NEW TICKET FORM END -->
 @endsection

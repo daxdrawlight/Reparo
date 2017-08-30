@@ -25,7 +25,7 @@
 				<label for="password_confirmation">Repeat password</label>
 			</div>
 			<div class="section"></div>
-			@include ('layouts.errors')
+			@include ('layouts.partials.errors')
 			<div class="section"></div>
               <button class="btn waves-effect waves-light primary" type="submit" name="action">Registrirajte se</button>
 		</div>

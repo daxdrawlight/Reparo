@@ -52,4 +52,4 @@
 </div></div>
 	</form>
 		</div>
-@include ('layouts.errors')
+@include ('layouts.partials.errors')
