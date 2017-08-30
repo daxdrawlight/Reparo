@@ -21,11 +21,14 @@ class TicketsController extends Controller
 
     public function store()
     {
+        // TODO: CHECK IF THE GENERATED STRING IS UNIQUE AND DOES NOT EXIST
+        $random_string = str_random(8);
+
     	$this->validate(request(), [
-    		'name' => 'required',
-    		'email' => 'email',
-    		'device' => 'required',
-    		'issue' => 'required'
+    		'name'    => 'required',
+    		'email'   => 'email',
+    		'device'  => 'required',
+    		'issue'   => 'required'
     		]);
 
     	Ticket::create([
@@ -36,7 +39,8 @@ class TicketsController extends Controller
     		'client_device'		=> request('device'),
     		'device_issue'		=> request('issue'),
     		'device_note'		=> request('note'),
-    		'status'			=> 1
+    		'status'			=> 1,
+            'serial'            => $random_string
     		]);
 
     	return redirect('/tickets');

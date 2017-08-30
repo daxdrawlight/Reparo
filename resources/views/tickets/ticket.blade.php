@@ -7,7 +7,7 @@
 		<div class="row">
 			{{-- CLIENT CARD START --}}
 			<div class="col s12">
-						<h4 class="center-align">Neki nalog</h4>
+						<h4 class="center-align">{{ $ticket->serial }}</h4>
 						<div class="section"></div>
 						<h5 class="left-align">Stranka</h5>
 						<div class="input-field">
