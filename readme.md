@@ -14,9 +14,7 @@ WIP ticket system for a local computer repair shop
 
 ## Authors
 
-* **Deni Pešić** - *Initial work* - [DaxDrawlight](https://github.com/daxdrawlight)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Deni Pešić** [DaxDrawlight](https://github.com/daxdrawlight)
 
 ## License
 
