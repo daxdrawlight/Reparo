@@ -12,8 +12,12 @@
     </head>
     <body class="grey lighten-4">
       @include ('layouts.nav')
-      <div class="container valign-wrapper full-height">
-      @yield('content')
+      <div class="container full-height">
+      <div class="section"></div>
+      <div class="section"></div>
+        @yield('content')
+      <div class="section"></div>
+      <div class="section"></div>
       </div>
       @include ('layouts.button')
 

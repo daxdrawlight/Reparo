@@ -53,3 +53,10 @@ input[type=search]:not(.browser-default),
 textarea.materialize-textarea {
 border-bottom: 1px solid $input-border;
 }
+
+@media #{$small-and-down} {
+    // styles for small screens and down
+    .row .tl-element{
+      padding: 20px 0px;
+    }
+  }

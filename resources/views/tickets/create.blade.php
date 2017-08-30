@@ -4,7 +4,6 @@
 <!-- NEW TICKET FORM START -->
 	<form method="POST" action="/tickets">	
 		{{ csrf_field() }}
-		<div class="section"></div>
 		<div class="card login-card">
 			<div class="card-content">
 		<div class="row">

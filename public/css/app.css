@@ -9915,3 +9915,9 @@ textarea.materialize-textarea {
   border-bottom: 1px solid #ff5722;
 }
 
+@media only screen and (max-width: 600px) {
+  .row .tl-element {
+    padding: 20px 0px;
+  }
+}
+

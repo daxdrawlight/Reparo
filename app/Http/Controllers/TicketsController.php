@@ -22,7 +22,7 @@ class TicketsController extends Controller
     public function store()
     {
         // TODO: CHECK IF THE GENERATED STRING IS UNIQUE AND DOES NOT EXIST
-        $random_string = str_random(8);
+        $random_string = "RN-" . str_random(8);
 
     	$this->validate(request(), [
     		'name'    => 'required',
