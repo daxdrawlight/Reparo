@@ -47,7 +47,9 @@
 							<label for="note">Napomena</label>
 						</div>
 						<div class="section"></div>
-						<button class="btn waves-effect waves-light primary" type="submit" name="action">Izradi nalog</button>
+						<div class="container center-align">
+							<button class="btn waves-effect waves-light primary" type="submit" name="action">Izradi nalog</button>
+						</div>
 			</div>
 			{{-- DEVICE CARD END --}}
 		</div>

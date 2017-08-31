@@ -13,7 +13,7 @@
 			</div>
 			<div class="col s2">
 			<div class="col s12">
-				<i class="material-icons right">notifications_none</i>
+				<i class="material-icons right">confirmation_number</i>
 			</div>
 					
 			</div>

@@ -3,11 +3,12 @@
 $body-bg: #f5f8fa;
 
 // Reparo variables for Material CSS
-$primary-color: #673AB6 !default;
-$secondary-color: #ff5722 !default;
+$primary-color: #6D70FF !default;
+$secondary-color: #5C5EE7 !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $input-border: $secondary-color !default;
 $input-focus-color: $input-border !default;
+$link-color: #ffffff !default;
 
 // Cards
 $card-padding: 36px;

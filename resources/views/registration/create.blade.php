@@ -27,7 +27,9 @@
 			<div class="section"></div>
 			@include ('layouts.partials.errors')
 			<div class="section"></div>
-              <button class="btn waves-effect waves-light primary" type="submit" name="action">Registrirajte se</button>
+			<div class="container center-align">
+				<button class="btn waves-effect waves-light primary" type="submit" name="action">Registrirajte se</button>
+			</div>
 		</div>
 		</div>
 	</form>
