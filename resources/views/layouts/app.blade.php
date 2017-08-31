@@ -16,6 +16,8 @@
       <div class="section hide-on-small-only"></div>
       <div class="section hide-on-small-only"></div>
         @yield('content')
+      <div class="section hide-on-small-only"></div>
+      <div class="section hide-on-small-only"></div>
       </div>
       @include ('layouts.button')
 

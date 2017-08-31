@@ -40,6 +40,12 @@ Route::get('/tickets/new', 'TicketsController@create');
 // Submit a new ticket
 Route::post('/tickets', 'TicketsController@store');
 
+// Edit a ticket
+Route::get('/tickets/edit/{id}', 'TicketsController@edit');
+
+// Update existing ticket
+Route::post('/tickets/edit/{id}', 'TicketsController@update');
+
 
 
 

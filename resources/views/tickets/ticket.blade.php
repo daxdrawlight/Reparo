@@ -22,19 +22,24 @@
 	<div class="collapsible-body">
 		<div class="full-width inline-flex">
 			<div class="col s10 ">
-				<div class="col s12 inline-flex truncate ticket-details">
+				<div class="col s12 inline-flex truncate">
 					<i class="tiny material-icons">event</i><span> &nbsp;&nbsp;{{ $ticket->created_at->format('d.m.Y') }}
 				</div>			
 				<div class="col s12 inline-flex truncate ticket-details">
-					<i class="tiny material-icons">person</i>&nbsp;&nbsp;{{$ticket->client_name }}
+					<i class="tiny material-icons">person</i>&nbsp;&nbsp;{{ $ticket->client_name }}
 				</div>
-				<div class="col s12 inline-flex truncate">
+				<div class="col s12 inline-flex truncate ticket-details">
 					<i class="tiny material-icons">location_on</i><span> &nbsp;&nbsp;Computer Centar Viškovo
 				</div>
+				@if ($ticket->note)
+				<div class="col s12 inline-flex truncate ticket-details">
+					<i class="tiny material-icons">report_problem</i><span> &nbsp;&nbsp;{{ $ticket->note }}
+				</div>
+				@endif
 			</div>
 			<div class="col s2">
 				<div class="col s12">
-					<a href="#"><i class="material-icons right">info</i></a>					
+					<a href="/tickets/edit/{{ $ticket->serial }}"><i class="material-icons right">edit</i></a>					
 				</div>
 			</div>
 		</div>

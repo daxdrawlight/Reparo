@@ -9,7 +9,7 @@ class TicketsController extends Controller
 {
     public function index()
     {
-    	$tickets = Ticket::all();
+    	$tickets = Ticket::latest()->get();
     	return view('tickets.index', compact('tickets'));
     }
 
@@ -43,5 +43,24 @@ class TicketsController extends Controller
     		]);
 
     	return redirect('/tickets');
+    }
+
+    public function edit($id){
+        $ticket = Ticket::where('serial', $id)->first();
+        return view('tickets.edit', compact('ticket'));
+    }
+
+    public function update($id){
+        Ticket::where('serial', $id)->update([
+            'client_name'       => request('name'),
+            'client_address'    => request('address'),
+            'client_phone'      => request('phone'),
+            'client_email'      => request('email'),
+            'client_device'     => request('device'),
+            'device_issue'      => request('issue'),
+            'device_note'       => request('note')
+            ]);
+
+        return redirect('/tickets');
     }
 }

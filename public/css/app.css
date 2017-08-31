@@ -9930,10 +9930,11 @@ form {
 .collapsible-body {
   color: #ffffff;
   background-color: #6D70FF;
+  padding: 1rem;
 }
 
 .ticket-details {
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 /* Text inputs */
