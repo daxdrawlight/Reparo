@@ -31,9 +31,9 @@
 				<div class="col s12 inline-flex truncate ticket-details">
 					<i class="tiny material-icons">location_on</i><span> &nbsp;&nbsp;Computer Centar Viškovo
 				</div>
-				@if ($ticket->note)
+				@if ($ticket->device_note)
 				<div class="col s12 inline-flex truncate ticket-details">
-					<i class="tiny material-icons">report_problem</i><span> &nbsp;&nbsp;{{ $ticket->note }}
+					<i class="tiny material-icons">report_problem</i><span> &nbsp;&nbsp;{{ $ticket->device_note }}
 				</div>
 				@endif
 			</div>
