@@ -4682,31 +4682,31 @@ nav .input-field label.active i {
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Thin), url(/fonts/vendor/materialize-css/roboto/Roboto-Thin.woff2?1f35e6a11d27d2e10d28946d42332dc5) format("woff2"), url(/fonts/vendor/materialize-css/roboto/Roboto-Thin.woff?44b78f142603eb69f593ed4002ed7a4a) format("woff");
+  src: local(Roboto Thin), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Thin.woff2?1f35e6a11d27d2e10d28946d42332dc5) format("woff2"), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Thin.woff?44b78f142603eb69f593ed4002ed7a4a) format("woff");
   font-weight: 100;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Light), url(/fonts/vendor/materialize-css/roboto/Roboto-Light.woff2?3c37aa69cd77e6a53a067170fa8fe2e9) format("woff2"), url(/fonts/vendor/materialize-css/roboto/Roboto-Light.woff?ea36cd9a0e9eee97012a67b8a4570d7b) format("woff");
+  src: local(Roboto Light), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Light.woff2?3c37aa69cd77e6a53a067170fa8fe2e9) format("woff2"), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Light.woff?ea36cd9a0e9eee97012a67b8a4570d7b) format("woff");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Regular), url(/fonts/vendor/materialize-css/roboto/Roboto-Regular.woff2?5136cbe62a63604402f2fedb97f246f8) format("woff2"), url(/fonts/vendor/materialize-css/roboto/Roboto-Regular.woff?3cf6adf61054c328b1b0ddcd8f9ce24d) format("woff");
+  src: local(Roboto Regular), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Regular.woff2?5136cbe62a63604402f2fedb97f246f8) format("woff2"), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Regular.woff?3cf6adf61054c328b1b0ddcd8f9ce24d) format("woff");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Medium), url(/fonts/vendor/materialize-css/roboto/Roboto-Medium.woff2?1561b424aaef2f704bbd89155b3ce514) format("woff2"), url(/fonts/vendor/materialize-css/roboto/Roboto-Medium.woff?cf4d60bc0b1d4b2314085919a00e1724) format("woff");
+  src: local(Roboto Medium), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Medium.woff2?1561b424aaef2f704bbd89155b3ce514) format("woff2"), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Medium.woff?cf4d60bc0b1d4b2314085919a00e1724) format("woff");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Bold), url(/fonts/vendor/materialize-css/roboto/Roboto-Bold.woff2?c0f1e4a4fdfb8048c72e86aadb2a247d) format("woff2"), url(/fonts/vendor/materialize-css/roboto/Roboto-Bold.woff?eed9aab5449cc9c8430d7d258108f602) format("woff");
+  src: local(Roboto Bold), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Bold.woff2?c0f1e4a4fdfb8048c72e86aadb2a247d) format("woff2"), url(/fonts/vendor/materialize-css/dist/roboto/Roboto-Bold.woff?eed9aab5449cc9c8430d7d258108f602) format("woff");
   font-weight: 700;
 }
 
@@ -9872,7 +9872,7 @@ main {
 }
 
 .full-height {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px - 8rem);
 }
 
 .full-width {
@@ -9897,6 +9897,36 @@ form {
   margin-right: auto;
 }
 
+.row .tl-element {
+  height: 100%;
+}
+
+.inline-flex {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  /* works with row or column */
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0.75rem 0;
+}
+
+.collapsible-header i {
+  margin-right: 0;
+}
+
+.ticket-details {
+  margin-bottom: 10px;
+}
+
 /* Text inputs */
 
 input:not([type]),
@@ -9913,11 +9943,5 @@ input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default),
 textarea.materialize-textarea {
   border-bottom: 1px solid #ff5722;
-}
-
-@media only screen and (max-width: 600px) {
-  .row .tl-element {
-    padding: 20px 0px;
-  }
 }
 
