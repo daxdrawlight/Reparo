@@ -35,13 +35,21 @@
 							<label for="device">Naziv</label>
 						</div>
 						<div class="input-field">
-							<input id="issue" type="text" class="validate" name="issue" value="{{ old('issue') }}{{ $ticket->device_issue }}" required>
+							<textarea id="issue" class="validate materialize-textarea" name="issue" required>{{ old('issue') }}{{ $ticket->device_issue }}</textarea>
 							<label for="issue">Opis kvara</label>
 						</div>
 						<div class="input-field">
-							<input id="note" type="text" class="validate" name="note" value="{{ old('note') }}{{ $ticket->device_note }}">
+							<textarea id="note" class="validate materialize-textarea" name="note">{{ old('note') }}{{ $ticket->device_note }}</textarea>
 							<label for="note">Napomena</label>
 						</div>
+						<div class="input-field">
+						    <select name="status">
+						    @foreach ($statuses as $status)
+						      <option value="{{ $status->id }}" {{ $ticket->status == $status->id ? "selected" : NULL }}>{{ $status->status }}</option>
+						    @endforeach
+						    </select>
+						    <label>Status</label>
+  						</div>
 						<div class="section"></div>
 						<div class="container center-align">
 							<button class="btn waves-effect waves-light primary" type="submit" name="action">Spremi</button>

@@ -39,11 +39,11 @@
 							<label for="device">Naziv</label>
 						</div>
 						<div class="input-field">
-							<input id="issue" type="text" class="validate" name="issue" value="{{ old('issue') }}" required>
+							<textarea id="issue" class="validate materialize-textarea" name="issue" required>{{ old('issue') }}</textarea>
 							<label for="issue">Opis kvara</label>
 						</div>
 						<div class="input-field">
-							<input id="note" type="text" class="validate" name="note" value="{{ old('note') }}">
+							<textarea id="note" class="validate materialize-textarea" name="note">{{ old('note') }}</textarea>
 							<label for="note">Napomena</label>
 						</div>
 						<div class="section"></div>

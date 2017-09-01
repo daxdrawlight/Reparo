@@ -9955,6 +9955,29 @@ textarea.materialize-textarea {
   border-bottom: 1px solid #5C5EE7;
 }
 
+.z-depth-1,
+nav,
+.card-panel,
+.card,
+.toast,
+.btn,
+.btn-large,
+.btn-floating,
+.dropdown-content,
+.collapsible,
+.side-nav {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.z-depth-1-half,
+.btn:hover,
+.btn-large:hover,
+.btn-floating:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 @media only screen and (max-width: 600px) {
   .login-card {
     margin: none;

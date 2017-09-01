@@ -26,6 +26,7 @@ class CreateTicketsTable extends Migration
             $table->text('device_note')->nullable();
             $table->text('device_diagnostic')->nullable();
             $table->string('status')->default('1');
+            $table->foreign('status')->references('id')->on('ticket_status');
             $table->integer('fee_percent')->nullable();
             $table->timestamps();
         });

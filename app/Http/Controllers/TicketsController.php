@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ticket;
+use App\TicketStatus;
 
 class TicketsController extends Controller
 {
     public function index()
     {
-    	$tickets = Ticket::latest()->get();
+    	$tickets = Ticket::latest()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon')->get();
     	return view('tickets.index', compact('tickets'));
     }
 
@@ -47,7 +48,8 @@ class TicketsController extends Controller
 
     public function edit($id){
         $ticket = Ticket::where('serial', $id)->first();
-        return view('tickets.edit', compact('ticket'));
+        $statuses = TicketStatus::all();
+        return view('tickets.edit', compact('ticket', 'statuses'));
     }
 
     public function update($id){
@@ -58,7 +60,8 @@ class TicketsController extends Controller
             'client_email'      => request('email'),
             'client_device'     => request('device'),
             'device_issue'      => request('issue'),
-            'device_note'       => request('note')
+            'device_note'       => request('note'),
+            'status'            => request('status')
             ]);
 
         return redirect('/tickets');
