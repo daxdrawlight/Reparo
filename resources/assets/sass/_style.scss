@@ -12,8 +12,13 @@
     flex: 1 0 auto;
   }
 
+  .card{
+    border-radius: $border-radius;
+    border: 1px solid $collapsible-border-color;
+  }
  .login-card{
   	max-width: 450px;
+    min-height: 525px;
   	margin: auto;
   	padding: 20px;
   }
@@ -54,19 +59,40 @@
    justify-content: flex-start;
    padding: 0.75rem 0;
   }
+
+  .collapsible{
+    background-color: #fff;
+    border-radius: $border-radius;
+  }
+  .collapsible-header{
+    background-color: transparent;
+  }
+
   .collapsible-header i{
     margin-right: 0;
   }
 
   .collapsible-body{
     color: #ffffff;
-    background-color: $primary-color;
+    background-color: $secondary-color;
     padding: 1rem;
   }
 
   .ticket-details{
     margin-top: 10px;
   }
+
+.z-depth-1 {
+  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+}
+.z-depth-1-half {
+  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+}
+
+.background{
+  background-color: $secondary-color;
+  height: 64px;
+}
 
 /* Text inputs */
 
@@ -86,19 +112,34 @@ textarea.materialize-textarea {
 border-bottom: 1px solid $input-border;
 }
 
+.prefix{
+  color: #ddd;
+}
+
+.col .no-pad{
+  padding: 0 0;
+}
+
+.add-btn{
+  color: $primary-color;
+}
+.remove-btn{
+  color: $secondary-color;
+}
+
 @media #{$small-and-down} {
     // styles for small screens and down
 
-    .login-card{
-      margin: none;
+    .card, .login-card{
+      margin: 0;
       min-height: calc(100vh - 64px);
       -webkit-transition: none;
       transition: none;
-      border-radius: none;
+      border: none;
+      border-radius: 0;
       -webkit-box-shadow: none;
       box-shadow: none;
       padding: 0;
-      border-radius: none;
       max-width: 100%;
     }
 

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use App\Ticket;
 use App\TicketStatus;
+use App\TicketWorkRecord;
 
 class TicketsController extends Controller
 {
@@ -25,10 +27,11 @@ class TicketsController extends Controller
         $random_string = "RN-" . str_random(8);
 
     	$this->validate(request(), [
-    		'name'    => 'required',
-    		'email'   => 'email',
-    		'device'  => 'required',
-    		'issue'   => 'required'
+    		'name'    	=> 'required',
+    		'email'   	=> 'required_without:phone|sometimes|nullable|email',
+    		'device'  	=> 'required',
+    		'issue'   	=> 'required',
+    		'phone'		=> 'required_without:email',
     		]);
 
     	Ticket::create([
@@ -43,13 +46,21 @@ class TicketsController extends Controller
             'serial'            => $random_string
     		]);
 
+        TicketWorkRecord::create([
+            'ticket_id'         => $random_string
+            ]);
+
     	return redirect('/tickets');
     }
 
     public function edit($id){
         $ticket = Ticket::where('serial', $id)->first();
+        $works = TicketWorkRecord::where('ticket_id', $id)->first();
+        $work = unserialize($works->description);
+        $hour = unserialize($works->hours);
+        $pph = unserialize($works->price);
         $statuses = TicketStatus::all();
-        return view('tickets.edit', compact('ticket', 'statuses'));
+        return view('tickets.edit', compact('ticket', 'work', 'hour', 'pph', 'statuses'));
     }
 
     public function update($id){
@@ -63,6 +74,16 @@ class TicketsController extends Controller
             'device_note'       => request('note'),
             'status'            => request('status')
             ]);
+
+        $work = serialize(Request::get('work'));
+        $hours = serialize(Request::get('hours'));
+        $pph = serialize(Request::get('pph'));
+        TicketWorkRecord::where('ticket_id', $id)->update([
+            'description' 		=> $work,
+            'hours'             => $hours,
+            'price'             => $pph,
+            'ticket_id' 		=> $id
+		]);       
 
         return redirect('/tickets');
     }

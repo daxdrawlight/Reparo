@@ -3,8 +3,8 @@
 $body-bg: #f5f8fa;
 
 // Reparo variables for Material CSS
-$primary-color: #6D70FF !default;
-$secondary-color: #5C5EE7 !default;
+$primary-color: #3476F3 !default;
+$secondary-color: #F43377 !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $input-border: $secondary-color !default;
 $input-focus-color: $input-border !default;
@@ -12,7 +12,8 @@ $link-color: #ffffff !default;
 
 // Cards
 $card-padding: 36px;
-
+$collapsible-border-color: #ddd !default;
+$border-radius: 2px;
 // Media queries
 // Media Query Ranges
 $small-screen-up: 601px !default;
@@ -27,3 +28,10 @@ $large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
 $extra-large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
 $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+
+//buttons
+$button-height: auto !default;
+$button-padding: 0.8rem 2rem !default;
+$button-radius: 2px !default;
+$button-large-height: $button-height !default;
+

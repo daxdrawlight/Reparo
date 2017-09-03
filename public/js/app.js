@@ -10365,6 +10365,22 @@ $(document).ready(function () {
   $('select').material_select();
 });
 
+$(document).on('click', '.add-btn', function (e) {
+  e.preventDefault();
+
+  var workContent = $('.work-row');
+  currentEntry = $(this).parents('.work-content:first').siblings('.work-content:first'), newEntry = $(currentEntry.clone()).appendTo(workContent);
+
+  newEntry.find('input').val('');
+  workContent.find('.input-field:not(:last) .add-btn');
+  // .removeClass('add-btn').addClass('remove-btn')
+  // .html('<i class="material-icons"><a href="" class="remove-btn">remove</a></i>');
+}).on('click', '.remove-btn', function (e) {
+  $(this).parents('.work-content:first').fadeOut().remove();
+  e.preventDefault();
+  return false;
+});
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {

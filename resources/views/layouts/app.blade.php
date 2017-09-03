@@ -11,7 +11,10 @@
       <title>Reparo</title>
     </head>
     <body class="grey lighten-4">
+    <header>
       @include ('layouts.nav')
+    </header>
+    <main>
       <div class="container full-height">
       <div class="section hide-on-small-only"></div>
       <div class="section hide-on-small-only"></div>
@@ -19,6 +22,7 @@
       <div class="section hide-on-small-only"></div>
       <div class="section hide-on-small-only"></div>
       </div>
+    </main>
       @include ('layouts.button')
 
       <!--Import jQuery before materialize.js-->

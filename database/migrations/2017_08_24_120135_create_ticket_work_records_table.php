@@ -17,9 +17,9 @@ class CreateTicketWorkRecordsTable extends Migration
             $table->increments('id');
             $table->integer('ticket_id')->unsigned()->nullable();
             $table->foreign('ticket_id')->references('id')->on('tickets');
-            $table->text('description')->nullable();
-            $table->integer('hours')->nullable();
-            $table->integer('price')->nullable();
+            $table->json('description')->nullable();
+            $table->json('hours')->nullable();
+            $table->json('price')->nullable();
             $table->timestamps();
         });
     }
