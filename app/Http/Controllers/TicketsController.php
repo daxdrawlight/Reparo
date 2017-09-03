@@ -47,7 +47,8 @@ class TicketsController extends Controller
     		]);
 
         TicketWorkRecord::create([
-            'ticket_id'         => $random_string
+            'ticket_id'         => $random_string,
+            'description'       => ''
             ]);
 
     	return redirect('/tickets');

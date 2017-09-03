@@ -84,9 +84,13 @@
 					<div class="work-content col s12 no-pad center-align">							
 								<i class="material-icons"><a href="" class="add-btn">add</a></i>						
 					</div>
-					@foreach ($work as $work)
-								@include ('tickets.work')
-					@endforeach
+					@if (is_array($work) || is_object($work))
+						@foreach ($work as $work)
+							@include ('tickets.work')
+						@endforeach
+					@else
+						@include ('tickets.work')
+					@endif
 					</div>
 				</div>
 					<div class="container center-align">
