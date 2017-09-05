@@ -31,7 +31,7 @@
 					</div>
 					<div class="input-field">
 						<i class="material-icons prefix">phone</i>
-						<input id="phone" type="text" class="validate" name="phone" value="{{ $ticket->client_phone }}">
+						<input id="phone" type="text" class="validate" name="phone" value="{{ old('phone') }}{{ $ticket->client_phone }}">
 						<label for="phone">Telefon</label>
 					</div>
 				</div>
@@ -84,13 +84,10 @@
 					<div class="work-content col s12 no-pad center-align">							
 								<i class="material-icons"><a href="" class="add-btn">add</a></i>						
 					</div>
-					@if (is_array($work) || is_object($work))
-						@foreach ($work as $work)
-							@include ('tickets.work')
+						@foreach ($collections as $collection)
+									@include ('tickets.work')
 						@endforeach
-					@else
-						@include ('tickets.work')
-					@endif
+
 					</div>
 				</div>
 					<div class="container center-align">

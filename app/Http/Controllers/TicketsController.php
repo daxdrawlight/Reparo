@@ -48,7 +48,9 @@ class TicketsController extends Controller
 
         TicketWorkRecord::create([
             'ticket_id'         => $random_string,
-            'description'       => ''
+            'description'       => serialize(array('')),
+            'hours'             => serialize(array('')),
+            'price'             => serialize(array(''))
             ]);
 
     	return redirect('/tickets');
@@ -56,15 +58,23 @@ class TicketsController extends Controller
 
     public function edit($id){
         $ticket = Ticket::where('serial', $id)->first();
-        $works = TicketWorkRecord::where('ticket_id', $id)->first();
-        $work = unserialize($works->description);
-        $hour = unserialize($works->hours);
-        $pph = unserialize($works->price);
+        $records = TicketWorkRecord::where('ticket_id', $id)->first();
+        $collections = collect($records);
+        // $works = unserialize($records->description);
+        // $hours = unserialize($records->hours);
+        // $pphs = unserialize($records->price);
         $statuses = TicketStatus::all();
-        return view('tickets.edit', compact('ticket', 'work', 'hour', 'pph', 'statuses'));
+        return view('tickets.edit', compact('ticket', 'collections', 'statuses'));
     }
 
     public function update($id){
+
+        $this->validate(request(), [
+            'work'          => 'required',
+            'hours'         => 'required',
+            'pph'           => 'required'
+            ]);
+
         Ticket::where('serial', $id)->update([
             'client_name'       => request('name'),
             'client_address'    => request('address'),
@@ -79,6 +89,7 @@ class TicketsController extends Controller
         $work = serialize(Request::get('work'));
         $hours = serialize(Request::get('hours'));
         $pph = serialize(Request::get('pph'));
+
         TicketWorkRecord::where('ticket_id', $id)->update([
             'description' 		=> $work,
             'hours'             => $hours,

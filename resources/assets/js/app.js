@@ -43,7 +43,7 @@ $(document).on('click', '.add-btn', function(e)
         // .html('<i class="material-icons"><a href="" class="remove-btn">remove</a></i>');
     }).on('click', '.remove-btn', function(e)
     {
-		$(this).parents('.work-content:first').fadeOut().remove();
+		$(this).parents('.work-content:first').remove();
 		e.preventDefault();
 		return false;
 	});
