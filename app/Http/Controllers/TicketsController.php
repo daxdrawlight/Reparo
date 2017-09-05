@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Request;
 use App\Ticket;
 use App\TicketStatus;
 use App\TicketWorkRecord;
+use App\TicketPartRecord;
 
 class TicketsController extends Controller
 {
@@ -53,27 +54,34 @@ class TicketsController extends Controller
             'price'             => serialize(array(''))
             ]);
 
+        TicketPartRecord::create([
+            'ticket_id'         => $random_string,
+            'description'       => serialize(array('')),
+            'serial'            => serialize(array('')),
+            'price'             => serialize(array(''))
+            ]);
+
     	return redirect('/tickets');
     }
 
     public function edit($id){
         $ticket = Ticket::where('serial', $id)->first();
         $records = TicketWorkRecord::where('ticket_id', $id)->first();
-        $collections = collect($records);
-        // $works = unserialize($records->description);
-        // $hours = unserialize($records->hours);
-        // $pphs = unserialize($records->price);
+        $parts = TicketPartRecord::where('ticket_id', $id)->first();
+
+        $works = unserialize($records->description);
+        $hours = unserialize($records->hours);
+        $pphs = unserialize($records->price);
+
+        $part = unserialize($records->description);
+        $serial = unserialize($records->serial);
+        $price = unserialize($records->price);
+
         $statuses = TicketStatus::all();
-        return view('tickets.edit', compact('ticket', 'collections', 'statuses'));
+        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'part', 'serial', 'price', 'statuses'));
     }
 
     public function update($id){
-
-        $this->validate(request(), [
-            'work'          => 'required',
-            'hours'         => 'required',
-            'pph'           => 'required'
-            ]);
 
         Ticket::where('serial', $id)->update([
             'client_name'       => request('name'),
@@ -94,8 +102,19 @@ class TicketsController extends Controller
             'description' 		=> $work,
             'hours'             => $hours,
             'price'             => $pph,
-            'ticket_id' 		=> $id
-		]);       
+            'ticket_id'         => $id
+		]);
+
+        $part = serialize(Request::get('part'));
+        $serial = serialize(Request::get('serial'));
+        $price = serialize(Request::get('price'));
+
+        TicketPartRecord::where('ticket_id', $id)->update([
+            'description'   => $part,
+            'serial'        => $serial,
+            'price'         => $price,
+            'ticket_id'         => $id
+        ]);         
 
         return redirect('/tickets');
     }

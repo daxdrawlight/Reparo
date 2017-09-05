@@ -84,10 +84,32 @@
 					<div class="work-content col s12 no-pad center-align">							
 								<i class="material-icons"><a href="" class="add-btn">add</a></i>						
 					</div>
-						@foreach ($collections as $collection)
-									@include ('tickets.work')
+					@if (is_array($works))
+						@foreach ($works as $key => $work)
+							@include ('tickets.work')
 						@endforeach
+					@else
+							@include ('tickets.work')
+					@endif
+					</div>
+				</div>
 
+				{{-- Parts information --}}
+
+				<div class="col s12 m10 offset-l1">
+					<h5 class="center-align">Ugrađeni dijelovi</h5>
+					<div class="section"></div>
+					<div class="work-row col s12 no-pad">
+					<div class="work-content col s12 no-pad center-align">							
+								<i class="material-icons"><a href="" class="add-btn">add</a></i>						
+					</div>
+					@if (is_array($part))
+						@foreach ($part as $key => $part)
+							@include ('tickets.part')
+						@endforeach
+					@else
+							@include ('tickets.part')
+					@endif
 					</div>
 				</div>
 					<div class="container center-align">
