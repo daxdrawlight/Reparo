@@ -51,17 +51,17 @@ class TicketsController extends Controller
 
         TicketWorkRecord::create([
             'ticket_id'         => $random_string,
-            'description'       => serialize(array('')),
-            'hours'             => serialize(array('')),
-            'price'             => serialize(array('')),
-            'total'             => serialize(array(''))
+            'description'       => serialize(array()),
+            'hours'             => serialize(array()),
+            'price'             => serialize(array()),
+            'total'             => serialize(array())
             ]);
 
         TicketPartRecord::create([
             'ticket_id'         => $random_string,
-            'description'       => serialize(array('')),
-            'serial'            => serialize(array('')),
-            'price'             => serialize(array(''))
+            'description'       => serialize(array()),
+            'serial'            => serialize(array()),
+            'price'             => serialize(array())
             ]);
 
     	return redirect('/tickets');
@@ -80,14 +80,14 @@ class TicketsController extends Controller
         $works = unserialize($ticket_works->description);
         $hours = unserialize($ticket_works->hours);
         $pphs = unserialize($ticket_works->price);
-        $totals = unserialize($ticket_works->total);
+        $work_totals = unserialize($ticket_works->total);
 
         // add work cost to the total ticket cost
 
         $ukupno = 0;
-        if(isset($totals))
+        if(!empty($work_totals))
         {
-            foreach($totals as $total){
+            foreach($work_totals as $total){
                     $ukupno += $total;
                 }
         }
@@ -113,7 +113,7 @@ class TicketsController extends Controller
 
         // load the ticket edit view and pass it all of the data
 
-        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses'));
+        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses'));
     }
 
     public function update($id){

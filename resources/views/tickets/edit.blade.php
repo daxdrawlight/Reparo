@@ -7,7 +7,7 @@
 		<div class="col s12 m1"><form method="POST" role="form" action="/tickets/delete/{{ $ticket->serial }}">	
 				{{ csrf_field() }}
 				{{ method_field('DELETE') }}
-				<button class="btn-floating waves-effect waves-light" type="submit" name="action"><i class="material-icons">delete_forever</i></button>
+				<button class="button btn waves-effect waves-light ticket-delete-button" type="submit" name="action"><i class="material-icons">delete_forever</i></button>
 			</form></div>
 		<div class="col s12 m10"><h4 class="center-align">{{ $ticket->serial }}</h4></div>
 		<div class="col s12 m1"></div>
@@ -89,14 +89,13 @@
 					<div class="divider"></div>
 					<div class="section"></div>
 				</div>
-				<div class="col s12 m10 offset-l1">
+				<div class="col s12 m12 l10 offset-l1">
 					<div class="work-row col s12 no-pad">
-					<div class="work-content col s12 no-pad center-align">							
-						<div class="col s11 left-align"><h5>Utrošeno radno vrijeme</h5></div>
-						<div class="col s1 center-align"><i class="material-icons"><a href="" class="add-btn">add</a></i></div>
+					<div class="col s12 no-pad center-align">							
+						<div class="col s12 left-align"><h5>Utrošeno radno vrijeme</h5></div>
 						<div class="col s12"><div class="section"></div></div>								
 					</div>
-					@if (is_array($works))
+					@if (!empty($works))
 						@foreach ($works as $key => $work)
 							@include ('tickets.work')
 						@endforeach
@@ -105,20 +104,26 @@
 					@endif
 					</div>
 				</div>
+				{{-- bottom modal --}}
+				  <div id="modal1" class="modal bottom-sheet">
+				    <div class="modal-content center-align">
+				      <p><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat add-work-btn">+ obavljeni rad</a></p>
+				      <p><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat add-part-btn">+ komponenta</a></p>
+				    </div>
+				  </div>
 				{{-- Parts information --}}
 				<div class="col s12">
 					<div class="section"></div>
 					<div class="divider"></div>
 					<div class="section"></div>
 				</div>
-				<div class="col s12 m10 offset-l1">
+				<div class="col s12 m12 l10 offset-l1">
 					<div class="part-row col s12 no-pad">
-					<div class="part-content col s12 no-pad center-align">
-						<div class="col s11 left-align"><h5>Ugrađeni dijelovi</h5></div>
-						<div class="col s1 center-align"><i class="material-icons"><a href="" class="add-btn">add</a></i></div>
+					<div class="col s12 no-pad center-align">
+						<div class="col s12 left-align"><h5>Ugrađeni dijelovi</h5></div>
 						<div class="col s12"><div class="section"></div></div>					
 					</div>
-					@if (is_array($parts))
+					@if (!empty($parts))
 						@foreach ($parts as $key => $part)
 							@include ('tickets.part')
 						@endforeach
@@ -132,7 +137,7 @@
 					<div class="divider"></div>
 					<div class="section"></div>
 				</div>
-				<div class="col s12 m10 offset-l1">
+				<div class="col s12 m12 l10 offset-l1">
 					<div class="col s6"><h5>UKUPNO</h5></div>
 					<div class="col s6">
 						@if(isset($ukupno))
@@ -142,10 +147,17 @@
 				</div>
 				<div class="col s12 center-align">
 					<div class="section"></div>
-					<button class="btn waves-effect waves-light primary" type="submit" name="action">Spremi</button>
+					<button class="button btn waves-effect waves-light ticket-save-button" type="submit" name="action"><i class="material-icons">save</i></button>
 				</div>
 			</div>
+
+			{{-- test sticky bottom navigation DELETE THIS COMMENT LATER FOOL! --}}
 			</form>
+			<div class="ticket-nav">
+				
+			</div>
+			<button class="button btn waves-effect waves-light ticket-modal-button modal-trigger" data-target="modal1"><i class="material-icons">playlist_add</i></button>
+			<button class="button btn waves-effect waves-light ticket-print-button"><i class="material-icons">file_download</i></button>
 		</div>
 		<div class="section"></div>
 	</div>

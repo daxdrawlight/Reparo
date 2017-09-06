@@ -127,6 +127,42 @@ border-bottom: 1px solid $input-border;
   color: $secondary-color;
 }
 
+.ticket-nav{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: $primary-color;
+  height: 59px;
+  width: 100%;
+}
+
+.ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-modal-button{
+  position: fixed;
+  bottom: 0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: $primary-color;
+  border-radius: 0px;
+  padding: 15px 30px;
+  max-height: 59px;
+}
+
+.ticket-save-button{
+  right: 0px;
+}
+
+.ticket-delete-button{
+  left: 0px;
+}
+
+.ticket-print-button{
+  right: 25%;
+}
+
+.ticket-modal-button{
+  left: 25%;
+}
+
 @media #{$small-and-down} {
     // styles for small screens and down
 
