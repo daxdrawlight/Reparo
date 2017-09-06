@@ -23,6 +23,9 @@
 		<div class="full-width inline-flex">
 			<div class="col s10 ">
 				<div class="col s12 inline-flex truncate">
+					<i class="tiny material-icons">title</i>&nbsp;&nbsp;{{ $ticket->serial }}
+				</div>
+				<div class="col s12 inline-flex truncate ticket-details">
 					<i class="tiny material-icons">event</i><span> &nbsp;&nbsp;{{ $ticket->created_at->format('d.m.Y') }}
 				</div>			
 				<div class="col s12 inline-flex truncate ticket-details">

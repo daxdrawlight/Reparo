@@ -25,7 +25,9 @@ class TicketsController extends Controller
     public function store()
     {
         // TODO: CHECK IF THE GENERATED STRING IS UNIQUE AND DOES NOT EXIST
-        $random_string = "RN-" . str_random(8);
+        $random = crc32(uniqid());
+        $random_string = 'RN-'.str_shuffle($random);
+        //$random_string = "RN-" . str_random(8);
 
     	$this->validate(request(), [
     		'name'    	=> 'required',
@@ -51,7 +53,8 @@ class TicketsController extends Controller
             'ticket_id'         => $random_string,
             'description'       => serialize(array('')),
             'hours'             => serialize(array('')),
-            'price'             => serialize(array(''))
+            'price'             => serialize(array('')),
+            'total'             => serialize(array(''))
             ]);
 
         TicketPartRecord::create([
@@ -65,23 +68,85 @@ class TicketsController extends Controller
     }
 
     public function edit($id){
+
+        // get the ticket data from the database
+
         $ticket = Ticket::where('serial', $id)->first();
-        $records = TicketWorkRecord::where('ticket_id', $id)->first();
-        $parts = TicketPartRecord::where('ticket_id', $id)->first();
+        $ticket_works = TicketWorkRecord::where('ticket_id', $id)->first();
+        $ticket_parts = TicketPartRecord::where('ticket_id', $id)->first();
 
-        $works = unserialize($records->description);
-        $hours = unserialize($records->hours);
-        $pphs = unserialize($records->price);
+        // unserialize the ticket work data
 
-        $part = unserialize($records->description);
-        $serial = unserialize($records->serial);
-        $price = unserialize($records->price);
+        $works = unserialize($ticket_works->description);
+        $hours = unserialize($ticket_works->hours);
+        $pphs = unserialize($ticket_works->price);
+        $totals = unserialize($ticket_works->total);
+
+        // add work cost to the total ticket cost
+
+        $ukupno = 0;
+        if(isset($totals))
+        {
+            foreach($totals as $total){
+                    $ukupno += $total;
+                }
+        }
+
+        // unserialize the ticket parts data
+
+        $parts = unserialize($ticket_parts->description);
+        $serial = unserialize($ticket_parts->serial);
+        $prices = unserialize($ticket_parts->price);
+
+        // add part prices to the total ticket price
+
+        if(isset($prices))
+        {
+            foreach($prices as $price){
+                $ukupno += $price;
+            }
+        }
+
+        // get all ticket statuses from the database
 
         $statuses = TicketStatus::all();
-        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'part', 'serial', 'price', 'statuses'));
+
+        // load the ticket edit view and pass it all of the data
+
+        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses'));
     }
 
     public function update($id){
+
+        $work = Request::get('work');
+        $hours = Request::get('hours');
+        $pph = Request::get('pph');
+
+        $part = Request::get('part');
+        $serial = Request::get('serial');
+        $price = Request::get('price'); 
+
+        $single_work_total = array();
+        $work_total = 0;
+        $part_total = 0;
+        $ticket_total = 0;
+
+        if(isset($work))
+        {
+            foreach ($work as $key => $value) {
+                $single_work_total[] = $hours[$key] * $pph[$key];
+                $work_total += $hours[$key] * $pph[$key];
+            }
+        }
+
+        if(isset($part))
+        {
+            foreach ($part as $key => $value) {
+                    $part_total += $price[$key];
+                }
+        }
+
+        $ticket_total = $work_total + $part_total;          
 
         Ticket::where('serial', $id)->update([
             'client_name'       => request('name'),
@@ -91,30 +156,32 @@ class TicketsController extends Controller
             'client_device'     => request('device'),
             'device_issue'      => request('issue'),
             'device_note'       => request('note'),
-            'status'            => request('status')
+            'status'            => request('status'),
+            'total'             => $ticket_total
             ]);
 
-        $work = serialize(Request::get('work'));
-        $hours = serialize(Request::get('hours'));
-        $pph = serialize(Request::get('pph'));
-
         TicketWorkRecord::where('ticket_id', $id)->update([
-            'description' 		=> $work,
-            'hours'             => $hours,
-            'price'             => $pph,
+            'description' 		=> serialize($work),
+            'hours'             => serialize($hours),
+            'price'             => serialize($pph),
+            'total'             => serialize($single_work_total),
             'ticket_id'         => $id
 		]);
 
-        $part = serialize(Request::get('part'));
-        $serial = serialize(Request::get('serial'));
-        $price = serialize(Request::get('price'));
-
         TicketPartRecord::where('ticket_id', $id)->update([
-            'description'   => $part,
-            'serial'        => $serial,
-            'price'         => $price,
-            'ticket_id'         => $id
+            'description'   => serialize($part),
+            'serial'        => serialize($serial),
+            'price'         => serialize($price),
+            'ticket_id'     => $id
         ]);         
+
+        return redirect()->back();
+    }
+
+    public function destroy($id){
+        Ticket::where('serial', $id)->delete();
+        TicketWorkRecord::where('ticket_id', $id)->delete();
+        TicketPartRecord::where('ticket_id', $id)->delete();
 
         return redirect('/tickets');
     }

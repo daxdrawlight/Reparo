@@ -1,11 +1,19 @@
 @extends ('layouts.app')
 
 @section ('content')
-<form method="POST" role="form" action="/tickets/edit/{{ $ticket->serial }}">	
-	{{ csrf_field() }}
 	<div class="card">
 		<div class="card-content">
-			<h4 class="center-align">{{ $ticket->serial }}</h4>
+		<div class="row">
+		<div class="col s12 m1"><form method="POST" role="form" action="/tickets/delete/{{ $ticket->serial }}">	
+				{{ csrf_field() }}
+				{{ method_field('DELETE') }}
+				<button class="btn-floating waves-effect waves-light" type="submit" name="action"><i class="material-icons">delete_forever</i></button>
+			</form></div>
+		<div class="col s12 m10"><h4 class="center-align">{{ $ticket->serial }}</h4></div>
+		<div class="col s12 m1"></div>
+		</div>
+			<form method="POST" role="form" action="/tickets/edit/{{ $ticket->serial }}">	
+				{{ csrf_field() }}
 			<div class="section"></div>
 			<div class="row">
 
@@ -76,50 +84,71 @@
 			<div class="row">
 
 				{{-- Work information --}}
-
-				<div class="col s12 m10 offset-l1">
-					<h5 class="center-align">Radno vrijeme</h5>
+				<div class="col s12">
 					<div class="section"></div>
+					<div class="divider"></div>
+					<div class="section"></div>
+				</div>
+				<div class="col s12 m10 offset-l1">
 					<div class="work-row col s12 no-pad">
 					<div class="work-content col s12 no-pad center-align">							
-								<i class="material-icons"><a href="" class="add-btn">add</a></i>						
+						<div class="col s11 left-align"><h5>Utrošeno radno vrijeme</h5></div>
+						<div class="col s1 center-align"><i class="material-icons"><a href="" class="add-btn">add</a></i></div>
+						<div class="col s12"><div class="section"></div></div>								
 					</div>
 					@if (is_array($works))
 						@foreach ($works as $key => $work)
 							@include ('tickets.work')
 						@endforeach
 					@else
-							@include ('tickets.work')
+						@include ('tickets.work')
 					@endif
 					</div>
 				</div>
-
 				{{-- Parts information --}}
-
-				<div class="col s12 m10 offset-l1">
-					<h5 class="center-align">Ugrađeni dijelovi</h5>
+				<div class="col s12">
 					<div class="section"></div>
-					<div class="work-row col s12 no-pad">
-					<div class="work-content col s12 no-pad center-align">							
-								<i class="material-icons"><a href="" class="add-btn">add</a></i>						
+					<div class="divider"></div>
+					<div class="section"></div>
+				</div>
+				<div class="col s12 m10 offset-l1">
+					<div class="part-row col s12 no-pad">
+					<div class="part-content col s12 no-pad center-align">
+						<div class="col s11 left-align"><h5>Ugrađeni dijelovi</h5></div>
+						<div class="col s1 center-align"><i class="material-icons"><a href="" class="add-btn">add</a></i></div>
+						<div class="col s12"><div class="section"></div></div>					
 					</div>
-					@if (is_array($part))
-						@foreach ($part as $key => $part)
+					@if (is_array($parts))
+						@foreach ($parts as $key => $part)
 							@include ('tickets.part')
 						@endforeach
 					@else
-							@include ('tickets.part')
+						@include ('tickets.part')
 					@endif
 					</div>
 				</div>
-					<div class="container center-align">
-						<button class="btn waves-effect waves-light primary" type="submit" name="action">Spremi</button>
+				<div class="col s12">
+					<div class="section"></div>
+					<div class="divider"></div>
+					<div class="section"></div>
+				</div>
+				<div class="col s12 m10 offset-l1">
+					<div class="col s6"><h5>UKUPNO</h5></div>
+					<div class="col s6">
+						@if(isset($ukupno))
+							<input disabled type="text" class="validate center-align total-price" style="font-size: 24px;"name="total-price[]" value="{{ $ukupno }} kn" autocomplete="off">
+						@endif
 					</div>
+				</div>
+				<div class="col s12 center-align">
+					<div class="section"></div>
+					<button class="btn waves-effect waves-light primary" type="submit" name="action">Spremi</button>
+				</div>
 			</div>
+			</form>
 		</div>
 		<div class="section"></div>
 	</div>
-</form>
 @include ('layouts.partials.errors')
 
 @endsection

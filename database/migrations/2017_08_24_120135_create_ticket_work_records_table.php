@@ -20,6 +20,7 @@ class CreateTicketWorkRecordsTable extends Migration
             $table->json('description')->nullable();
             $table->json('hours')->nullable();
             $table->json('price')->nullable();
+            $table->json('total')->nullable();
             $table->timestamps();
         });
     }

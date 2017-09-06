@@ -28,6 +28,7 @@ class CreateTicketsTable extends Migration
             $table->string('status')->default('1');
             $table->foreign('status')->references('id')->on('ticket_status');
             $table->integer('fee_percent')->nullable();
+            $table->float('total')->nullable();
             $table->timestamps();
         });
     }

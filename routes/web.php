@@ -46,6 +46,9 @@ Route::get('/tickets/edit/{id}', 'TicketsController@edit');
 // Update existing ticket
 Route::post('/tickets/edit/{id}', 'TicketsController@update');
 
+// Delete existing ticket
+Route::delete('/tickets/delete/{id}', 'TicketsController@destroy');
+
 
 
 
