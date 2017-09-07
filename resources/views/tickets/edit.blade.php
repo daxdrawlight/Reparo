@@ -157,7 +157,8 @@
 				
 			</div>
 			<button class="button btn waves-effect waves-light ticket-modal-button modal-trigger" data-target="modal1"><i class="material-icons">playlist_add</i></button>
-			<a href="/tickets/print/{{ $ticket->serial}} " class="button btn waves-effect waves-light ticket-print-button"><i class="material-icons">file_download</i></a>
+			<a href="/tickets/download/{{ $ticket->serial}} " class="button btn waves-effect waves-light ticket-download-button"><i class="material-icons">file_download</i></a>
+			<a href="/tickets/print/{{ $ticket->serial}} " class="button btn waves-effect waves-light ticket-print-button"><i class="material-icons">print</i></a>
 		</div>
 		<div class="section"></div>
 	</div>

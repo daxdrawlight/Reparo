@@ -12,6 +12,6 @@
 		<label for="price[]">Cijena</label>
 	</div>
 	<div class="input-field col s12 m1 center-align">
-		<i class="material-icons"><a href="" class="remove-btn">remove</a></i>
+		<i class="material-icons"><a href="" class="remove-btn">clear</a></i>
 	</div>							
 </div>

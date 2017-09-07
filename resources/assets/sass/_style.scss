@@ -140,7 +140,7 @@ border-bottom: 1px solid $input-border;
   width: 100%;
 }
 
-.ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-modal-button{
+.ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-download-button, .ticket-modal-button{
   position: absolute;
   bottom: 0px;
   -webkit-box-shadow: none;
@@ -152,7 +152,8 @@ border-bottom: 1px solid $input-border;
 }
 
 .ticket-save-button{
-  right: 0px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .ticket-delete-button{
@@ -160,11 +161,15 @@ border-bottom: 1px solid $input-border;
 }
 
 .ticket-print-button{
-  right: 26%;
+  right: 0px;
+}
+
+.ticket-download-button{
+  right: 22%;
 }
 
 .ticket-modal-button{
-  left: 26%;
+  left: 22%;
 }
 
 .new-ticket{
@@ -217,7 +222,7 @@ border-bottom: 1px solid $input-border;
       background-color: #fff;
     }
 
-    .ticket-nav, .ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-modal-button{
+    .ticket-nav, .ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-download-button, .ticket-modal-button{
       position: fixed;
     }
   }
