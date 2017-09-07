@@ -16,12 +16,14 @@
     border-radius: $border-radius;
     border: 1px solid $collapsible-border-color;
   }
+
  .login-card{
   	max-width: 450px;
     min-height: 525px;
   	margin: auto;
   	padding: 20px;
   }
+
  .full-height{
   	min-height: calc(100vh - 64px - 8rem);
   }
@@ -33,9 +35,11 @@
   .btn-large, .btn-floating{
     background-color: $secondary-color;
   }
+
   form{
     width:100%;
   }
+
   .ticket-card{
     min-height: 460px;
   }
@@ -128,23 +132,23 @@ border-bottom: 1px solid $input-border;
 }
 
 .ticket-nav{
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   background-color: $primary-color;
-  height: 59px;
+  height: 56px;
   width: 100%;
 }
 
 .ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-modal-button{
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
   background-color: $primary-color;
   border-radius: 0px;
-  padding: 15px 30px;
-  max-height: 59px;
+  padding: 14px 30px;
+  max-height: 56px;
 }
 
 .ticket-save-button{
@@ -156,11 +160,17 @@ border-bottom: 1px solid $input-border;
 }
 
 .ticket-print-button{
-  right: 25%;
+  right: 26%;
 }
 
 .ticket-modal-button{
-  left: 25%;
+  left: 26%;
+}
+
+.new-ticket{
+  position: absolute;
+  right: 34px;
+  top: 34px;
 }
 
 @media #{$small-and-down} {
@@ -205,5 +215,9 @@ border-bottom: 1px solid $input-border;
 
     body{
       background-color: #fff;
+    }
+
+    .ticket-nav, .ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-modal-button{
+      position: fixed;
     }
   }

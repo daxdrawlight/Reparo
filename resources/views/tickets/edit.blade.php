@@ -107,7 +107,7 @@
 				{{-- bottom modal --}}
 				  <div id="modal1" class="modal bottom-sheet">
 				    <div class="modal-content center-align">
-				      <p><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat add-work-btn">+ obavljeni rad</a></p>
+				      <p><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat add-work-btn">+ rad</a></p>
 				      <p><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat add-part-btn">+ komponenta</a></p>
 				    </div>
 				  </div>

@@ -23,7 +23,7 @@
       <div class="section hide-on-small-only"></div>
       </div>
     </main>
-      {{-- @include ('layouts.button') --}}
+      @include ('layouts.button')
 
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
