@@ -9,7 +9,7 @@
 	</div>
 	<div class="input-field pph col s12 m2">
 		<input type="text" class="validate pph center-align" name="pph[]" value="@if(!empty($pphs)){{$pphs[$key]}}@endif" autocomplete="off">
-		<label for="pph[]">Cijena</label>
+		<label for="pph[]">Cijena/sat</label>
 	</div>
 	<div class="input-field total col s12 m2">
 		<input disabled type="text" class="validate work-total center-align" name="work-total[]" value="@if(!empty($work_totals)){{ $work_totals[$key] }}@endif" autocomplete="off">

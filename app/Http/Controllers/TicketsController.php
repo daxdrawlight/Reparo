@@ -8,6 +8,7 @@ use App\Ticket;
 use App\TicketStatus;
 use App\TicketWorkRecord;
 use App\TicketPartRecord;
+use PDF;
 
 class TicketsController extends Controller
 {
@@ -184,5 +185,49 @@ class TicketsController extends Controller
         TicketPartRecord::where('ticket_id', $id)->delete();
 
         return redirect('/tickets');
+    }
+
+    public function makePdf($id){
+
+        // get the ticket data from the database
+
+        $ticket = Ticket::where('serial', $id)->first();
+        $ticket_works = TicketWorkRecord::where('ticket_id', $id)->first();
+        $ticket_parts = TicketPartRecord::where('ticket_id', $id)->first();
+
+        // unserialize the ticket work data
+
+        $works = unserialize($ticket_works->description);
+        $hours = unserialize($ticket_works->hours);
+        $pphs = unserialize($ticket_works->price);
+        $work_totals = unserialize($ticket_works->total);
+
+        // add work cost to the total ticket cost
+
+        $ukupno = 0;
+        if(!empty($work_totals))
+        {
+            foreach($work_totals as $total){
+                    $ukupno += $total;
+                }
+        }
+
+        // unserialize the ticket parts data
+
+        $parts = unserialize($ticket_parts->description);
+        $serial = unserialize($ticket_parts->serial);
+        $prices = unserialize($ticket_parts->price);
+
+        // add part prices to the total ticket price
+
+        if(isset($prices))
+        {
+            foreach($prices as $price){
+                $ukupno += $price;
+            }
+        }
+
+        $pdf = PDF::loadView('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno'))->setPaper('a4', 'portrait')->setOptions(['dpi' => 150, 'defaultFont' => 'Arial']);
+        return $pdf->download('invoice.pdf');
     }
 }
