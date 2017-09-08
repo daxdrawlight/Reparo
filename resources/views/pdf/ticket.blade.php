@@ -205,9 +205,9 @@ section table thead {
   border-color: inherit;
 }
 section table thead th {
-  padding: 10px 10px;
-  background: #B2DDD4;
-  border-right: 5px solid #FFFFFF;
+  padding: 20px;
+  background: #f4f4f4;
+  
   color: #000;
   text-align: center;
   font-weight: 400;
@@ -222,7 +222,7 @@ section table tbody tr:first-child td {
 section table tbody td {
   padding: 10px 10px;
   text-align: center;
-  border-right: 3px solid #66BDA9;
+  border-right: 3px solid #f4f4f4;
 }
 section table tbody td:last-child {
   border-right: none;
@@ -292,6 +292,9 @@ footer .end {
   text-align: center;
 }
 
+.end-table td{
+  border-right: none;
+}
 	</style>
 </head>
 
@@ -321,8 +324,9 @@ footer .end {
 				<div class="data right">
 					<div class="title">{{$ticket->serial}}</div>
 					<div class="date">
-						{{ $ticket->created_at->format('d.m.Y') }} <br>
-            Computer Centar Viškovo
+          Computer Centar Viškovo <br>
+					Prijava: {{ $ticket->created_at->format('d.m.Y') }} <br>
+          Izdano: {{ date('d.m.Y') }}
 					</div>
 				</div>
 			</div>
@@ -401,6 +405,7 @@ footer .end {
       </table>
       @endif
       @if($works['0'] != NULL || $parts['0'] != NULL)
+      <table style="height: 10px;"></table>
 			<div class="no-break">
 				<table class="grand-total">
 					<tbody>
@@ -415,6 +420,26 @@ footer .end {
 				</table>
 			</div>
       @endif
+      <table cellspacing="10">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td style="text-align: justify;">
+            NAPOMENA: svi uređaji koji su popravljeni čuvaju se 30 dana od obavjesti vlasnika. Nakon tog roka servis više ne odgovara za njih, tj. isti
+se prodaju da se namire troškovi nastali u servisu ili ako nije moguće nadoknaditi nastale troškove isti se zbrinjavaju kao otpad.
+          </td>
+        </tr>
+      </table>
+      <table class="end-table">
+        <tr>
+          <td>ZAPRIMIO</td>
+          <td>PREDAO</td>
+          <td>PREUZEO</td>
+        </tr>
+      </table>
 		</div>
 	</section>
 </body>
