@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Model extends Eloquent
 {
-	protected $guarded = ['user_id'];
+	//protected $guarded = ['user_id'];
+	protected $guarded = [''];
 }

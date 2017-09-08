@@ -8,13 +8,14 @@ use App\Ticket;
 use App\TicketStatus;
 use App\TicketWorkRecord;
 use App\TicketPartRecord;
+use App\User;
 use PDF;
 
 class TicketsController extends Controller
 {
     public function index()
     {
-    	$tickets = Ticket::latest()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon')->get();
+    	$tickets = Ticket::latest()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name')->get();
     	return view('tickets.index', compact('tickets'));
     }
 
@@ -29,6 +30,8 @@ class TicketsController extends Controller
         $random = crc32(uniqid());
         $random_string = 'RN-'.str_shuffle($random);
         //$random_string = "RN-" . str_random(8);
+
+        $user_id = \Auth::user()->id;
 
     	$this->validate(request(), [
     		'name'    	=> 'required',
@@ -47,7 +50,8 @@ class TicketsController extends Controller
     		'device_issue'		=> request('issue'),
     		'device_note'		=> request('note'),
     		'status'			=> 1,
-            'serial'            => $random_string
+            'serial'            => $random_string,
+            'user_id'           => $user_id
     		]);
 
         TicketWorkRecord::create([
@@ -72,9 +76,10 @@ class TicketsController extends Controller
 
         // get the ticket data from the database
 
-        $ticket = Ticket::where('serial', $id)->first();
-        $ticket_works = TicketWorkRecord::where('ticket_id', $id)->first();
-        $ticket_parts = TicketPartRecord::where('ticket_id', $id)->first();
+        $ticket         = Ticket::where('serial', $id)->first();
+        $ticket_works   = TicketWorkRecord::where('ticket_id', $id)->first();
+        $ticket_parts   = TicketPartRecord::where('ticket_id', $id)->first();
+        $author         = User::where('id', $ticket->user_id)->first();
 
         // unserialize the ticket work data
 
@@ -114,7 +119,7 @@ class TicketsController extends Controller
 
         // load the ticket edit view and pass it all of the data
 
-        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses'));
+        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses', 'author'));
         //return view('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses'));
     }
 

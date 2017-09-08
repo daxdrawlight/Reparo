@@ -32,7 +32,7 @@
 					<i class="tiny material-icons">person</i>&nbsp;&nbsp;{{ $ticket->client_name }}
 				</div>
 				<div class="col s12 inline-flex truncate ticket-details">
-					<i class="tiny material-icons">location_on</i><span> &nbsp;&nbsp;Computer Centar Viškovo
+					<i class="tiny material-icons">location_on</i><span> &nbsp;&nbsp;{{ $ticket->name }}
 				</div>
 				@if ($ticket->device_note)
 				<div class="col s12 inline-flex truncate ticket-details">

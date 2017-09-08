@@ -10,6 +10,10 @@
 				<button class="button btn waves-effect waves-light ticket-delete-button" type="submit" name="action"><i class="material-icons">delete_forever</i></button>
 			</form></div>
 		<div class="col s12 m10"><h4 class="center-align">{{ $ticket->serial }}</h4></div>
+		<div class="col s12 m10 offset-m1 offset-l1">
+			<div class="col s6 left-align"><i class="tiny material-icons">location_on</i><span> {{ $author->name }}</div>
+			<div class="col s6 right-align"><i class="tiny material-icons">event</i><span> {{ $ticket->created_at->format('d.m.Y') }}</div>
+		</div>
 		<div class="col s12 m1"></div>
 		</div>
 			<form method="POST" role="form" action="/tickets/edit/{{ $ticket->serial }}">	
