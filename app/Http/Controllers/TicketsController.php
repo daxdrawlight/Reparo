@@ -115,9 +115,18 @@ class TicketsController extends Controller
         // load the ticket edit view and pass it all of the data
 
         return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses'));
+        //return view('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses'));
     }
 
     public function update($id){
+
+        $this->validate(request(), [
+            'name'      => 'required',
+            'email'     => 'required_without:phone|sometimes|nullable|email',
+            'device'    => 'required',
+            'issue'     => 'required',
+            'phone'     => 'required_without:email',
+            ]);
 
         $work = Request::get('work');
         $hours = Request::get('hours');
@@ -227,7 +236,51 @@ class TicketsController extends Controller
             }
         }
 
-        $pdf = PDF::loadView('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno'))->setPaper('a4', 'portrait')->setOptions(['dpi' => 150, 'defaultFont' => 'Arial']);
-        return $pdf->download('invoice.pdf');
+        $pdf = PDF::loadView('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno'))->setPaper('a4', 'portrait')->setOptions(['dpi' => 150, 'defaultFont' => 'Arial', 'isRemoteEnabled' => true]);
+        return $pdf->download($id.'.pdf');
+    }
+
+    public function printPdf($id){
+
+        // get the ticket data from the database
+
+        $ticket = Ticket::where('serial', $id)->first();
+        $ticket_works = TicketWorkRecord::where('ticket_id', $id)->first();
+        $ticket_parts = TicketPartRecord::where('ticket_id', $id)->first();
+
+        // unserialize the ticket work data
+
+        $works = unserialize($ticket_works->description);
+        $hours = unserialize($ticket_works->hours);
+        $pphs = unserialize($ticket_works->price);
+        $work_totals = unserialize($ticket_works->total);
+
+        // add work cost to the total ticket cost
+
+        $ukupno = 0;
+        if(!empty($work_totals))
+        {
+            foreach($work_totals as $total){
+                    $ukupno += $total;
+                }
+        }
+
+        // unserialize the ticket parts data
+
+        $parts = unserialize($ticket_parts->description);
+        $serial = unserialize($ticket_parts->serial);
+        $prices = unserialize($ticket_parts->price);
+
+        // add part prices to the total ticket price
+
+        if(isset($prices))
+        {
+            foreach($prices as $price){
+                $ukupno += $price;
+            }
+        }
+
+        $pdf = PDF::loadView('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno'))->setPaper('a4', 'portrait')->setOptions(['dpi' => 150, 'defaultFont' => 'Arial', 'isRemoteEnabled' => true]);
+        return $pdf->stream($id.".pdf", array("Attachment" => false));
     }
 }

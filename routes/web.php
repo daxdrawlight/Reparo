@@ -36,8 +36,11 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// Delete existing ticket
 	Route::delete('/tickets/delete/{id}', 'TicketsController@destroy');
 
-	// get pdf
-	Route::get('/tickets/print/{id}', 'TicketsController@makePdf');
+	// create pdf
+	Route::get('/tickets/download/{id}', 'TicketsController@makePdf');
+
+	// print pdf
+	Route::get('/tickets/print/{id}', 'TicketsController@printPdf');
 
 });
 
