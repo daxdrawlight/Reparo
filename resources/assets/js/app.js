@@ -129,4 +129,12 @@ $(document).on('click', '.add-part-btn', function(e)
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
   });
+
+$(function() {
+   $("#delete_btn").click(function(event){
+      if (!confirm("Obriši nalog?")){
+         event.preventDefault();
+      }
+   });
+});
           

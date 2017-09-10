@@ -10,6 +10,8 @@ use App\TicketWorkRecord;
 use App\TicketPartRecord;
 use App\User;
 use PDF;
+use App\Mail\NewTicket;
+use App\Mail\UpdateTicket;
 
 class TicketsController extends Controller
 {
@@ -68,6 +70,8 @@ class TicketsController extends Controller
             'serial'            => serialize(array()),
             'price'             => serialize(array())
             ]);
+
+        \Mail::to('info@computer-centar.com')->send(new NewTicket($random_string));
 
     	return redirect('/tickets');
     }
@@ -188,8 +192,20 @@ class TicketsController extends Controller
             'serial'        => serialize($serial),
             'price'         => serialize($price),
             'ticket_id'     => $id
-        ]);         
+        ]);
 
+        $status = TicketStatus::select('status')->where('id', request('status'))->first();
+
+        $mail_data = ([
+            'client_name'   => request('name'),
+            'ticket'        => $id,
+            'status'        => $status->status
+            ]);
+        $subject = 'Status servisa br. '.$mail_data['ticket'];
+
+        \Mail::to(request('email'))->send(new UpdateTicket($mail_data), [], function ($message){
+            $message->subject($subject);
+        });
         return redirect()->back();
     }
 

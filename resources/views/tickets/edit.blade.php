@@ -4,10 +4,10 @@
 	<div class="card">
 		<div class="card-content">
 		<div class="row">
-		<div class="col s12 m1"><form method="POST" role="form" action="/tickets/delete/{{ $ticket->serial }}">	
+		<div class="col s12 m1"><form method="POST" role="form" id="delete" action="/tickets/delete/{{ $ticket->serial }}">	
 				{{ csrf_field() }}
 				{{ method_field('DELETE') }}
-				<button class="button btn waves-effect waves-light ticket-delete-button" type="submit" name="action"><i class="material-icons">delete_forever</i></button>
+				<button id="delete_btn"class="button btn waves-effect waves-light ticket-delete-button" type="submit" name="action"><i class="material-icons">delete_forever</i></button>
 			</form></div>
 		<div class="col s12 m10"><h4 class="center-align">{{ $ticket->serial }}</h4></div>
 		<div class="col s12 m10 offset-m1 offset-l1">
@@ -154,8 +154,6 @@
 					<button class="button btn waves-effect waves-light ticket-save-button" type="submit" name="action"><i class="material-icons">save</i></button>
 				</div>
 			</div>
-
-			{{-- test sticky bottom navigation DELETE THIS COMMENT LATER FOOL! --}}
 			</form>
 			<div class="ticket-nav">
 				

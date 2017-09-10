@@ -10462,6 +10462,14 @@ $(document).ready(function () {
     $('.modal').modal();
 });
 
+$(function () {
+    $("#delete_btn").click(function (event) {
+        if (!confirm("Obriši nalog?")) {
+            event.preventDefault();
+        }
+    });
+});
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {

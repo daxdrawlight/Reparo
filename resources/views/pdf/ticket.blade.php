@@ -351,7 +351,7 @@ footer .end {
 					</tr>
 				</tbody>
 			</table>
-      @if (!empty($works) && $works['0'] != NULL)
+      @if (!empty($works) && isset($works['0']) != NULL)
       <table border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td class="desc">EVIDENCIJA UTROŠENOG RADA</td>
@@ -379,7 +379,7 @@ footer .end {
       </table>
       @endif
 
-      @if (!empty($parts) && $parts['0'] != NULL)
+      @if (!empty($parts) && isset($parts['0']) != NULL)
       <table border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td class="desc">EVIDENCIJA UGRAĐENIH DIJELOVA</td>
@@ -404,7 +404,7 @@ footer .end {
           </tbody>
       </table>
       @endif
-      @if($works['0'] != NULL || $parts['0'] != NULL)
+      @if(isset($works['0']) != NULL || isset($parts['0']) != NULL)
       <table style="height: 10px;"></table>
 			<div class="no-break">
 				<table class="grand-total">
