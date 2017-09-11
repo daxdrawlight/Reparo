@@ -27,10 +27,10 @@ class RegistrationController extends Controller
     		'password' => bcrypt(request('password')),
     		]);
 
-    	// Sign in the user
-    	auth()->login($user);
+    	// // Sign in the user
+    	// auth()->login($user);
 
     	// Redirect user to home page
-    	return redirect()->home();
+    	return redirect('/dashboard/users');
     }
 }

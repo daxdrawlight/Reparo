@@ -3,8 +3,8 @@
 @section ('content')
 <div class="row">
 		<ul class="collapsible" data-collapsible="accordion">
-			@foreach ($tickets as $ticket)
-				@include ('tickets.ticket')
+			@foreach ($users as $user)
+				@include ('dashboard.users.user')
 			@endforeach
 		</ul>
 	</div>

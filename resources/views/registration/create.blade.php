@@ -10,7 +10,7 @@
 			<div class="section"></div>
 			<div class="input-field">
 				<input id="name" type="text" class="validate" name="name" value="{{ old('name') }}" required>
-				<label for="name">Name</label>
+				<label for="name">Korisničko ime</label>
 			</div>
 			<div class="input-field">
 				<input id="email" type="email" class="validate" name="email" value="{{ old('email') }}" required>
@@ -18,11 +18,11 @@
 			</div>
 			<div class="input-field">
 				<input id="password" type="password" class="validate" name="password" required>
-				<label for="password">Password</label>
+				<label for="password">Lozinka</label>
 			</div>
 			<div class="input-field">
 				<input id="password_confirmation" type="password" class="validate" name="password_confirmation" required>
-				<label for="password_confirmation">Repeat password</label>
+				<label for="password_confirmation">Ponovi lozinku</label>
 			</div>
 			<div class="section"></div>
 			@include ('layouts.partials.errors')

@@ -12,9 +12,7 @@
 */
 
 // Load the index view on the root page
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
@@ -42,6 +40,12 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// print pdf
 	Route::get('/tickets/print/{id}', 'TicketsController@printPdf');
 
+	//dashbaord
+	Route::get('/dashboard', 'DashboardController@index');
+
+	//users list
+	Route::get('/dashboard/users', 'UsersController@index');
+
 });
 
 // Load register page and display form to crete a new user
@@ -51,7 +55,7 @@ Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
 
 // Load login page and display form to crete a new session
-Route::get('/login', 'SessionsController@create');
+Route::get('/login', 'SessionsController@create')->name('login');
 
 // Log in user
 Route::post('/login', 'SessionsController@store');

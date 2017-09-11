@@ -28,6 +28,6 @@ class UpdateTicket extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.UpdateTicket');
+        return $this->view('emails.UpdateTicket')->subject('Status servisa br. '. $this->mail_data['ticket'] . ' promijenjen u "' . $this->mail_data['status'] . '"');
     }
 }

@@ -10,8 +10,10 @@ use App\TicketWorkRecord;
 use App\TicketPartRecord;
 use App\User;
 use PDF;
+use Mail;
 use App\Mail\NewTicket;
 use App\Mail\UpdateTicket;
+use Auth;
 
 class TicketsController extends Controller
 {
@@ -77,6 +79,10 @@ class TicketsController extends Controller
     }
 
     public function edit($id){
+
+        if(!Auth::check()){
+            return view('sessions.create');
+        }
 
         // get the ticket data from the database
 
@@ -165,7 +171,9 @@ class TicketsController extends Controller
                 }
         }
 
-        $ticket_total = $work_total + $part_total;          
+        $ticket_total = $work_total + $part_total;   
+        $current_status = Ticket::select('status')->where('serial', $id)->first()->status;
+        $new_status = Request::get('status');
 
         Ticket::where('serial', $id)->update([
             'client_name'       => request('name'),
@@ -194,18 +202,18 @@ class TicketsController extends Controller
             'ticket_id'     => $id
         ]);
 
-        $status = TicketStatus::select('status')->where('id', request('status'))->first();
+        if($current_status != $new_status){
+            $status = TicketStatus::select('status')->where('id', request('status'))->first();
 
-        $mail_data = ([
-            'client_name'   => request('name'),
-            'ticket'        => $id,
-            'status'        => $status->status
-            ]);
-        $subject = 'Status servisa br. '.$mail_data['ticket'];
-
-        \Mail::to(request('email'))->send(new UpdateTicket($mail_data), [], function ($message){
-            $message->subject($subject);
-        });
+            $mail_data = ([
+                'client_name'   => request('name'),
+                'ticket'        => $id,
+                'status'        => $status->status
+                ]);
+            if(!empty(request('email'))){
+                \Mail::to(request('email'))->send(new UpdateTicket($mail_data));
+            }
+        }
         return redirect()->back();
     }
 

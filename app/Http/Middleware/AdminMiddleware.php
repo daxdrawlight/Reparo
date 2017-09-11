@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class AdminMiddleware
 {
@@ -15,9 +16,14 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->role_id != 1){
+        if(Auth::check()){ //check if user is logged in
+            if ($request->user()->role_id != 1){
+                return redirect('/');
+            }
+            return $next($request);
+        }
+        else{
             return redirect('/');
         }
-        return $next($request);
     }
 }
