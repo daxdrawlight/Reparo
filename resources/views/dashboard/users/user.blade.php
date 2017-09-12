@@ -31,11 +31,6 @@
 						<i class="tiny material-icons">title</i>&nbsp;&nbsp;{{ $user->fullname }}
 					</div>
 			@endif
-			@if (!empty($user->created_at))
-					<div class="col s12 inline-flex truncate ticket-details">
-						<i class="tiny material-icons">event</i><span> &nbsp;&nbsp;{{ $user->created_at->format('d.m.Y') }}
-					</div>
-			@endif
 			@if (!empty($user->address))			
 					<div class="col s12 inline-flex truncate ticket-details">
 						<i class="tiny material-icons">location_on</i><span> &nbsp;&nbsp;{{ $user->address }}

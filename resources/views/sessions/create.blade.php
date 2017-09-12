@@ -14,7 +14,7 @@
 			</div>
 			<div class="input-field">
 				<input id="password" type="password" class="validate" name="password" required>
-				<label for="password">Password</label>
+				<label for="password">Lozinka</label>
 			</div>
 			<div class="section"></div>
 			@include ('layouts.partials.errors')

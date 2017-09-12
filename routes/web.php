@@ -34,6 +34,15 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// Delete existing ticket
 	Route::delete('/tickets/delete/{id}', 'TicketsController@destroy');
 
+	// Edit existing user
+	Route::get('/dashboard/user/edit/{id}', 'UsersController@edit');
+
+	// Update existing user
+	Route::post('/dashboard/user/edit/{id}', 'UsersController@update');
+
+	// Delete existing user
+	Route::delete('/dashboard/user/delete/{id}', 'UsersController@destroy');
+
 	// create pdf
 	Route::get('/tickets/download/{id}', 'TicketsController@makePdf');
 

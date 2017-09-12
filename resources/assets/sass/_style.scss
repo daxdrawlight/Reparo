@@ -135,28 +135,37 @@ border-bottom: 1px solid $input-border;
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: $primary-color;
+  background-color: $secondary-color;
   height: 56px;
   width: 100%;
 }
 
-.ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-download-button, .ticket-modal-button{
+.ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-download-button, .ticket-modal-button, .user-delete-button{
   position: absolute;
   bottom: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
-  background-color: $primary-color;
+  background-color: $secondary-color;
   border-radius: 0px;
   padding: 14px 30px;
   max-height: 56px;
 }
+
+.user-delete-button{
+  background-color: transparent;
+}
+
+.user-delete-button i{
+  color: $primary-color;
+}
+
 
 .ticket-save-button{
   left: 50%;
   transform: translateX(-50%);
 }
 
-.ticket-delete-button{
+.ticket-delete-button, .user-delete-button{
   left: 0px;
 }
 

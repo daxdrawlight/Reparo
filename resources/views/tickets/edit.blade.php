@@ -20,10 +20,10 @@
 				{{ csrf_field() }}
 			<div class="section"></div>
 			<div class="row">
-
+			<div class="col s10 offset-l1 offset-m1 offset-s1">
 				{{-- Client information --}}
 
-				<div class="col s12 l4 offset-l1">
+				<div class="col s12 l6">
 					<h5 class="center-align">Stranka</h5>
 					<div class="section"></div>
 					<div class="input-field">
@@ -47,12 +47,10 @@
 						<label for="phone">Telefon</label>
 					</div>
 				</div>
-
-				<div class="col s0 m0 l1"></div>
 				
 				{{-- Device information --}}
 				
-				<div class="col s12 l5">
+				<div class="col s12 l6">
 					<h5 class="center-align">Uređaj</h5>
 					<div class="section"></div>
 					<div class="input-field">
@@ -82,7 +80,7 @@
 					<div class="section"></div>
 				</div>
 			</div>
-			
+			</div>
 			{{-- Advanced details section --}}
 
 			<div class="row">

@@ -10470,6 +10470,14 @@ $(function () {
     });
 });
 
+$(function () {
+    $("#delete_usr_btn").click(function (event) {
+        if (!confirm("Obriši korisnika?")) {
+            event.preventDefault();
+        }
+    });
+});
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {

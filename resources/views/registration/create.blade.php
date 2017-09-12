@@ -6,7 +6,7 @@
 		{{ csrf_field() }}
 		<div class="card login-card">
 		<div class="card-content">
-			<h4 class="center-align">Registracija</h4>
+			<h4 class="center-align">Novi korisnik</h4>
 			<div class="section"></div>
 			<div class="input-field">
 				<input id="name" type="text" class="validate" name="name" value="{{ old('name') }}" required>
@@ -28,7 +28,7 @@
 			@include ('layouts.partials.errors')
 			<div class="section"></div>
 			<div class="container center-align">
-				<button class="btn waves-effect waves-light primary" type="submit" name="action">Registrirajte se</button>
+				<button class="btn waves-effect waves-light primary" type="submit" name="action">Izradi</button>
 			</div>
 		</div>
 		</div>

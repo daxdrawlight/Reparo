@@ -19,7 +19,7 @@ class TicketsController extends Controller
 {
     public function index()
     {
-    	$tickets = Ticket::latest()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name')->get();
+    	$tickets = Ticket::latest()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name', 'users.fullname')->get();
     	return view('tickets.index', compact('tickets'));
     }
 
@@ -73,16 +73,16 @@ class TicketsController extends Controller
             'price'             => serialize(array())
             ]);
 
-        \Mail::to('info@computer-centar.com')->send(new NewTicket($random_string));
+        // \Mail::to('info@computer-centar.com')->send(new NewTicket($random_string));
 
     	return redirect('/tickets');
     }
 
     public function edit($id){
 
-        if(!Auth::check()){
-            return view('sessions.create');
-        }
+        // if(!Auth::check()){
+        //     return view('sessions.create');
+        // }
 
         // get the ticket data from the database
 
@@ -202,19 +202,19 @@ class TicketsController extends Controller
             'ticket_id'     => $id
         ]);
 
-        if($current_status != $new_status){
-            $status = TicketStatus::select('status')->where('id', request('status'))->first();
+    //     if($current_status != $new_status){
+    //         $status = TicketStatus::select('status')->where('id', request('status'))->first();
 
-            $mail_data = ([
-                'client_name'   => request('name'),
-                'ticket'        => $id,
-                'status'        => $status->status
-                ]);
-            if(!empty(request('email'))){
-                \Mail::to(request('email'))->send(new UpdateTicket($mail_data));
-            }
-        }
-        return redirect()->back();
+    //         $mail_data = ([
+    //             'client_name'   => request('name'),
+    //             'ticket'        => $id,
+    //             'status'        => $status->status
+    //             ]);
+    //         if(!empty(request('email'))){
+    //             \Mail::to(request('email'))->send(new UpdateTicket($mail_data));
+    //         }
+    //     }
+         return redirect()->back();
     }
 
     public function destroy($id){

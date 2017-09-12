@@ -27,7 +27,7 @@ class SessionsController extends Controller
     	}
 
     	// Redirect to the home page
-    	return redirect()->home();
+    	return redirect('/tickets/new');
 
     }
 

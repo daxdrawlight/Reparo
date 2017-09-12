@@ -137,4 +137,12 @@ $(function() {
       }
    });
 });
+
+$(function() {
+   $("#delete_usr_btn").click(function(event){
+      if (!confirm("Obriši korisnika?")){
+         event.preventDefault();
+      }
+   });
+});
           
