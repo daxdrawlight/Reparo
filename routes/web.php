@@ -19,11 +19,26 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	//Load the index view of the tickets page
 	Route::get('/tickets', 'TicketsController@index');
 
-	//Load ticket creation page
-	Route::get('/tickets/new', 'TicketsController@create');
+	// Edit existing user
+	Route::get('/user/edit/{id}', 'UsersController@edit');
 
-	// Submit a new ticket
-	Route::post('/tickets', 'TicketsController@store');
+	// Update existing user
+	Route::post('/user/edit/{id}', 'UsersController@update');
+
+	// Delete existing user
+	Route::delete('/user/delete/{id}', 'UsersController@destroy');
+
+	//dashbaord
+	Route::get('/dashboard', 'DashboardController@index');
+
+	//users list
+	Route::get('/dashboard/users', 'UsersController@index');
+
+	// Load register page and display form to crete a new user
+	Route::get('/register', 'RegistrationController@create');
+
+	// Validate the form and create the new user
+	Route::post('/register', 'RegistrationController@store');
 
 	// Edit a ticket
 	Route::get('/tickets/edit/{id}', 'TicketsController@edit');
@@ -34,14 +49,15 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// Delete existing ticket
 	Route::delete('/tickets/delete/{id}', 'TicketsController@destroy');
 
-	// Edit existing user
-	Route::get('/dashboard/user/edit/{id}', 'UsersController@edit');
+});
 
-	// Update existing user
-	Route::post('/dashboard/user/edit/{id}', 'UsersController@update');
+Route::group(['middleware' => 'App\Http\Middleware\UserMiddleware'], function()
+{
+	//Load ticket creation page
+	Route::get('/tickets/new', 'TicketsController@create');
 
-	// Delete existing user
-	Route::delete('/dashboard/user/delete/{id}', 'UsersController@destroy');
+	// Submit a new ticket
+	Route::post('/tickets', 'TicketsController@store');
 
 	// create pdf
 	Route::get('/tickets/download/{id}', 'TicketsController@makePdf');
@@ -49,19 +65,21 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// print pdf
 	Route::get('/tickets/print/{id}', 'TicketsController@printPdf');
 
-	//dashbaord
-	Route::get('/dashboard', 'DashboardController@index');
+	// View selected user tickets
+	Route::get('/user/tickets/', 'UserTicketsController@index');
 
-	//users list
-	Route::get('/dashboard/users', 'UsersController@index');
+	// edit user ticket
+	Route::get('/user/ticket/{id}', 'UserTicketsController@edit');
 
+	// update user ticket
+	Route::post('/user/ticket/{id}', 'UserTicketsController@update');
+
+	// Edit your user profile
+	Route::get('/profile', 'UserProfileController@index');
+
+	// Update your user profile
+	Route::post('/profile', 'UserProfileController@update');
 });
-
-// Load register page and display form to crete a new user
-Route::get('/register', 'RegistrationController@create');
-
-// Validate the form and create the new user
-Route::post('/register', 'RegistrationController@store');
 
 // Load login page and display form to crete a new session
 Route::get('/login', 'SessionsController@create')->name('login');

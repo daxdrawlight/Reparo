@@ -42,12 +42,12 @@
 				</div>
 			@endif
 			<div class="col s12 inline-flex truncate ticket-details">
-					<i class="tiny material-icons">list</i><span> &nbsp;&nbsp; <a href="#!">Lista naloga</a>
+					<i class="tiny material-icons">list</i><span> &nbsp;&nbsp; <a href="/user/{{ $user->id }}/tickets/">Lista naloga</a>
 				</div>
 			</div>
 			<div class="col s2">
 				<div class="col s12">
-					<a href="/dashboard/user/edit/{{ $user->id }}"><i class="material-icons right">edit</i></a>					
+					<a href="/user/edit/{{ $user->id }}"><i class="material-icons right">edit</i></a>					
 				</div>
 			</div>
 		</div>

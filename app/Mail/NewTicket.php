@@ -29,6 +29,6 @@ class NewTicket extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.NewTicket');
+        return $this->view('emails.NewTicket')->subject('Novi nalog ' . $this->random_string);
     }
 }

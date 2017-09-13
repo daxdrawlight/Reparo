@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token', 'role_id'
     ];
 
-    public function posts(){
+    public function tickets(){
         return $this->hasMany(Ticket::class);
     }
 }

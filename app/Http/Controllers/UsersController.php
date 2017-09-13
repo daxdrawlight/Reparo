@@ -50,6 +50,6 @@ class UsersController extends Controller
     			]);
     	}
         User::where('id', $id)->delete();
-        return redirect('/dashboard/users');
+        return redirect('/users');
     }
 }

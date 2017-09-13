@@ -143,10 +143,10 @@
                         <!-- COPY -->
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td align="center" style="font-size: 24px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy">{{Auth::user()->name}} <br> Service Point</td>
+                                <td align="center" style="font-size: 24px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy">{{Auth::user()->fullname}} <br> Service Point</td>
                             </tr>
                             <tr>
-                                <td align="left" style="padding: 20px 0 0 0; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">Kreiran je novi nalog br. <a href="{{ url('/') }}/tickets/edit/{{$random_string}}" target="_blank">{{ $random_string }}</a> u {{Auth::user()->name}} service pointu.</td>
+                                <td align="left" style="padding: 20px 0 0 0; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">Kreiran je novi nalog br. <a href="{{ url('/') }}/tickets/edit/{{$random_string}}" target="_blank">{{ $random_string }}</a> u {{Auth::user()->fullname}} service pointu.</td>
                             </tr>
                         </table>
                     </td>

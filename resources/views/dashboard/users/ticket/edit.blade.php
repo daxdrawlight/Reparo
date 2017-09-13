@@ -4,19 +4,14 @@
 	<div class="card">
 		<div class="card-content">
 		<div class="row">
-		<div class="col s12 m1"><form method="POST" role="form" id="delete" action="/tickets/delete/{{ $ticket->serial }}">	
-				{{ csrf_field() }}
-				{{ method_field('DELETE') }}
-				<button id="delete_btn"class="button btn waves-effect waves-light ticket-delete-button" type="submit" name="action"><i class="material-icons">delete_forever</i></button>
-			</form></div>
-		<div class="col s12 m10"><h4 class="center-align">{{ $ticket->serial }}</h4></div>
+		<div class="col s12"><h4 class="center-align">{{ $ticket->serial }}</h4></div>
 		<div class="col s12 m10 offset-m1 offset-l1">
 			<div class="col s6 left-align"><i class="tiny material-icons">location_on</i><span> {{ $author->name }}</div>
 			<div class="col s6 right-align"><i class="tiny material-icons">event</i><span> {{ $ticket->created_at->format('d.m.Y') }}</div>
 		</div>
 		<div class="col s12 m1"></div>
 		</div>
-			<form method="POST" role="form" action="/tickets/edit/{{ $ticket->serial }}">	
+			<form method="POST" role="form" action="/user/ticket/{{ $ticket->serial }}">	
 				{{ csrf_field() }}
 			<div class="section"></div>
 			<div class="row">
@@ -70,7 +65,7 @@
 					</div>
 					<div class="input-field">
 						<i class="material-icons prefix">build</i>
-					    <select name="status">
+					    <select name="status" disabled>
 					    	@foreach ($statuses as $status)
 					      		<option value="{{ $status->id }}" {{ $ticket->status == $status->id ? "selected" : NULL }}>{{ $status->status }}</option>
 					    	@endforeach
@@ -99,20 +94,13 @@
 					</div>
 					@if (!empty($works))
 						@foreach ($works as $key => $work)
-							@include ('tickets.work')
+							@include ('dashboard.users.ticket.work')
 						@endforeach
 					@else
-						@include ('tickets.work')
+						@include ('dashboard.users.ticket.work')
 					@endif
 					</div>
 				</div>
-				{{-- bottom modal --}}
-				  <div id="modal1" class="modal bottom-sheet">
-				    <div class="modal-content center-align">
-				      <p><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat add-work-btn">+ rad</a></p>
-				      <p><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat add-part-btn">+ komponenta</a></p>
-				    </div>
-				  </div>
 				{{-- Parts information --}}
 				<div class="col s12">
 					<div class="section"></div>
@@ -120,30 +108,10 @@
 					<div class="section"></div>
 				</div>
 				<div class="col s12 m12 l10 offset-l1">
-					<div class="part-row col s12 no-pad">
-					<div class="col s12 no-pad center-align">
-						<div class="col s12 left-align"><h5>Ugrađeni dijelovi</h5></div>
-						<div class="col s12"><div class="section"></div></div>					
-					</div>
-					@if (!empty($parts))
-						@foreach ($parts as $key => $part)
-							@include ('tickets.part')
-						@endforeach
-					@else
-						@include ('tickets.part')
-					@endif
-					</div>
-				</div>
-				<div class="col s12">
-					<div class="section"></div>
-					<div class="divider"></div>
-					<div class="section"></div>
-				</div>
-				<div class="col s12 m12 l10 offset-l1">
-					<div class="col s6"><h5>UKUPNO</h5></div>
+					<div class="col s6"><h5>PROVIZIJA</h5></div>
 					<div class="col s6">
-						@if(isset($ukupno))
-							<input disabled type="text" class="validate center-align total-price" style="font-size: 24px;"name="total-price[]" value="{{ $ukupno }} kn" autocomplete="off">
+						@if(isset($provizija))
+							<input disabled type="text" class="validate center-align total-price" style="font-size: 24px;"name="provizija" value="{{ $provizija }} kn" autocomplete="off">
 						@endif
 					</div>
 				</div>
@@ -156,8 +124,7 @@
 			<div class="ticket-nav">
 				
 			</div>
-			<button class="button btn waves-effect waves-light ticket-modal-button modal-trigger" data-target="modal1"><i class="material-icons">playlist_add</i></button>
-			<a href="/tickets/download/{{ $ticket->serial}} " class="button btn waves-effect waves-light ticket-download-button"><i class="material-icons">file_download</i></a>
+			<a href="/tickets/download/{{ $ticket->serial}} " class="button btn waves-effect waves-light ticket-download-button sp-dl-btn"><i class="material-icons">file_download</i></a>
 			<a href="/tickets/print/{{ $ticket->serial}} " target="_blank" class="button btn waves-effect waves-light ticket-print-button"><i class="material-icons">print</i></a>
 		</div>
 		<div class="section"></div>

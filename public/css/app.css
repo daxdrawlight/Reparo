@@ -9943,9 +9943,13 @@ form {
 }
 
 .collapsible-body {
-  color: #ffffff;
-  background-color: #FF6F00;
+  color: #666666;
+  background-color: #f5f5f5;
   padding: 1rem;
+}
+
+.collapsible-body i {
+  color: #6F72FF;
 }
 
 .ticket-details {
@@ -10064,6 +10068,11 @@ textarea.materialize-textarea {
 
 .ticket-download-button {
   right: 22%;
+}
+
+.sp-dl-btn {
+  left: 0px;
+  max-width: 80px;
 }
 
 .ticket-modal-button {

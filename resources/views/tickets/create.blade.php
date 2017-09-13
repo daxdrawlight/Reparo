@@ -8,7 +8,7 @@
 			<h4 class="center-align">Novi nalog</h4>
 			<div class="section"></div>
 			<div class="row">
-			<div class="col s10 offset-l1 offset-m1 offset-s1">
+			<div class="col s12 m10 offset-l1 offset-m1">
 
 				{{-- Client information --}}
 				<div class="col s12 l6">

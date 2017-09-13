@@ -42,7 +42,11 @@
 			</div>
 			<div class="col s2">
 				<div class="col s12">
-					<a href="/tickets/edit/{{ $ticket->serial }}"><i class="material-icons right">edit</i></a>					
+					@if (auth()->user()->role_id == 2)
+						<a href="/user/ticket/{{ $ticket->serial }}"><i class="material-icons right">edit</i></a>
+					@else
+						<a href="/tickets/edit/{{ $ticket->serial }}"><i class="material-icons right">edit</i></a>
+					@endif					
 				</div>
 			</div>
 		</div>

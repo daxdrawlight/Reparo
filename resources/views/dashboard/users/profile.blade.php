@@ -3,12 +3,7 @@
 @section ('content')
 		<div class="card login-card">
 			<div class="card-content">
-				<form method="POST" role="form" id="delete" action="/user/delete/{{ $user->id }}">	
-				{{ csrf_field() }}
-				{{ method_field('DELETE') }}
-				<button id="delete_usr_btn"class="button btn waves-effect waves-light user-delete-button" type="submit" name="action"><i class="material-icons">delete_forever</i></button>
-				</form>
-			<form method="POST" role="form" action="/user/edit/{{ $user->id }}">	
+			<form method="POST" role="form" action="/profile">	
 				{{ csrf_field() }}
 				<h4 class="center-align">{{ $user->name }}</h4>
 				<div class="section"></div>
@@ -28,14 +23,6 @@
 					<input id="phone" type="text" class="validate" name="phone" value="@if(!empty($user->phone)){{$user->phone}}@endif">
 					<label for="phone">Telefon</label>
 				</div>
-				<div class="input-field">
-					    <select name="role" @if($user->id == 1) {{ 'disabled' }} @endif>
-					    	@foreach ($roles as $role)
-					      		<option value="{{ $role->id }}" {{ $user->role_id == $role->id ? "selected" : NULL }}>{{$role->name}}</option>
-					    	@endforeach
-					    </select>
-					    <label>Uloga</label>
-  					</div>
 				<div class="section"></div>
 
 				@include ('layouts.partials.errors')
