@@ -73,7 +73,7 @@ class TicketsController extends Controller
             'price'             => serialize(array())
             ]);
 
-        \Mail::to('pesic.deni@gmail.com')->send(new NewTicket($random_string));
+        \Mail::to('info@computer-centar.com')->send(new NewTicket($random_string));
         if(auth()->user()->role_id == 2){
             return redirect('/user/ticket/'.$random_string);
         }
