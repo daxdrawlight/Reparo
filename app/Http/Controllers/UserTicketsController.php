@@ -17,8 +17,12 @@ use Auth;
 
 class UserTicketsController extends Controller
 {
-    public function index(){
-    	$id = auth()->user()->id;
+    public function index($id){
+
+        if(auth()->user()->role_id == 2){
+            $id = auth()->user()->id;
+        }
+
     	$tickets = User::find($id)->tickets()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name', 'users.fullname')->get();
 
     		return view('tickets.index', compact('tickets'));

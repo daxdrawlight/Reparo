@@ -49,6 +49,9 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// Delete existing ticket
 	Route::delete('/tickets/delete/{id}', 'TicketsController@destroy');
 
+	// View selected user tickets
+	Route::get('/user/{id}/tickets', 'UserTicketsController@index');
+
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\UserMiddleware'], function()
@@ -66,7 +69,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserMiddleware'], function()
 	Route::get('/tickets/print/{id}', 'TicketsController@printPdf');
 
 	// View selected user tickets
-	Route::get('/user/tickets/', 'UserTicketsController@index');
+	Route::get('/user/tickets', 'UserTicketsController@index');
 
 	// edit user ticket
 	Route::get('/user/ticket/{id}', 'UserTicketsController@edit');

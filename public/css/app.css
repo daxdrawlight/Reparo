@@ -9952,6 +9952,10 @@ form {
   color: #6F72FF;
 }
 
+.collapsible-body a {
+  color: #666666;
+}
+
 .ticket-details {
   margin-top: 10px;
 }
