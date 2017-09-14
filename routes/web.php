@@ -33,7 +33,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::get('/dashboard', 'DashboardController@index');
 
 	//users list
-	Route::get('/dashboard/users', 'UsersController@index');
+	Route::get('/users', 'UsersController@index');
 
 	// Load register page and display form to crete a new user
 	Route::get('/register', 'RegistrationController@create');
@@ -51,7 +51,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::delete('/tickets/delete/{id}', 'TicketsController@destroy');
 
 	// View selected user tickets
-	Route::get('/user/{id}/tickets', 'UserTicketsController@index');
+	Route::get('/user/{id}/tickets', 'UserTicketsController@adminIndex');
 
 });
 

@@ -10095,6 +10095,10 @@ nav {
   top: 34px;
 }
 
+.pwd-reset a {
+  color: #495aff;
+}
+
 @media only screen and (max-width: 600px) {
   .card,
   .login-card {
@@ -10148,7 +10152,7 @@ nav {
   }
 
   .card .card-content {
-    padding: 18px;
+    padding: 24px;
   }
 }
 

@@ -8,7 +8,7 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="theme-color" content="#6D70FF">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>Reparo</title>
+      <title>Nalog sustav</title>
     </head>
     <body class="grey lighten-4">
     <header>

@@ -13,6 +13,7 @@ use PDF;
 use Mail;
 use App\Mail\NewTicket;
 use App\Mail\UpdateTicket;
+use App\ExternalService;
 use Auth;
 
 class TicketsController extends Controller
@@ -58,6 +59,10 @@ class TicketsController extends Controller
             'user_id'           => $user_id
     		]);
 
+        ExternalService::create([
+            'ticket_id'         => $random_string    
+        ]);
+
         TicketWorkRecord::create([
             'ticket_id'         => $random_string,
             'description'       => serialize(array()),
@@ -90,6 +95,7 @@ class TicketsController extends Controller
         $ticket_works   = TicketWorkRecord::where('ticket_id', $id)->first();
         $ticket_parts   = TicketPartRecord::where('ticket_id', $id)->first();
         $author         = User::where('id', $ticket->user_id)->first();
+        $outside        = ExternalService::where('ticket_id', $id)->first();
 
         // unserialize the ticket work data
 
@@ -135,7 +141,7 @@ class TicketsController extends Controller
 
         // load the ticket edit view and pass it all of the data
 
-        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses', 'author', 'provizija'));
+        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses', 'author', 'provizija', 'outside'));
     }
 
     public function update($id){
@@ -192,19 +198,23 @@ class TicketsController extends Controller
             'total'             => $ticket_total
             ]);
 
+        ExternalService::where('ticket_id', $id)->update([
+            'name'          => request('outside'),
+            'start'         => request('start'),
+            'end'           => request('end')
+        ]);
+
         TicketWorkRecord::where('ticket_id', $id)->update([
             'description' 		=> serialize($work),
             'hours'             => serialize($hours),
             'price'             => serialize($pph),
-            'total'             => serialize($single_work_total),
-            'ticket_id'         => $id
+            'total'             => serialize($single_work_total)
 		]);
 
         TicketPartRecord::where('ticket_id', $id)->update([
             'description'   => serialize($part),
             'serial'        => serialize($serial),
-            'price'         => serialize($price),
-            'ticket_id'     => $id
+            'price'         => serialize($price)
         ]);
 
         if($current_status != $new_status){

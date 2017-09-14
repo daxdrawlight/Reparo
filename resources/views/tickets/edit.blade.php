@@ -11,7 +11,7 @@
 			</form></div>
 		<div class="col s12 m10"><h4 class="center-align">{{ $ticket->serial }}</h4></div>
 		<div class="col s12 m10 offset-m1 offset-l1">
-			<div class="col s6 left-align"><i class="tiny material-icons">location_on</i><span> {{ $author->name }}</div>
+			<div class="col s6 left-align"><i class="tiny material-icons">location_on</i><span>@if(isset($author->fullname)){{ $author->fullname }}@else{{ $author->name }}@endif</div>
 			<div class="col s6 right-align"><i class="tiny material-icons">event</i><span> {{ $ticket->created_at->format('d.m.Y') }}</div>
 		</div>
 		<div class="col s12 m1"></div>
@@ -82,11 +82,37 @@
 			</div>
 			</div>
 			{{-- Advanced details section --}}
+			<div class="row">
+				<div class="col s12 m10 offset-m1 offset-l1">
+						<div class="divider"></div>
+						<div class="section"></div>
+				</div>
+					<div class="col s12 m10 offset-l1 offset-m1">
+						<div class="col s12 no-pad">
+							<div class="col s12 no-pad center-align">							
+								<div class="col s12 center-align"><h5>Vanjski servis</h5></div>
+								<div class="col s12"><div class="section"></div></div>
 
+								<div class="input-field col s12 m6">
+									<input type="text" class="validate" name="outside" value="@if(isset($outside->name)){{$outside->name}}@endif" autocomplete="off">
+									<label for="outside">Vanjski serviser</label>				
+								</div>
+								<div class="input-field col s12 m3">
+									<input type="text" class="datepicker" name="start" value="@if(isset($outside->start)){{$outside->start}}@endif" autocomplete="off">
+									<label for="start">Od</label>				
+								</div>
+								<div class="input-field col s12 m3">
+									<input type="text" class="datepicker" name="end" value="@if(isset($outside->end)){{$outside->end}}@endif" autocomplete="off">
+									<label for="end">Do</label>				
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			<div class="row">
 
 				{{-- Work information --}}
-				<div class="col s12">
+				<div class="col s12 m10 offset-m1 offset-l1">
 					<div class="section"></div>
 					<div class="divider"></div>
 					<div class="section"></div>
@@ -94,7 +120,7 @@
 				<div class="col s12 m12 l10 offset-l1">
 					<div class="work-row col s12 no-pad">
 					<div class="col s12 no-pad center-align">							
-						<div class="col s12 left-align"><h5>Utrošeno radno vrijeme</h5></div>
+						<div class="col s12 center-align"><h5>Utrošeno radno vrijeme</h5></div>
 						<div class="col s12"><div class="section"></div></div>								
 					</div>
 					@if (!empty($works))
@@ -114,7 +140,7 @@
 				    </div>
 				  </div>
 				{{-- Parts information --}}
-				<div class="col s12">
+				<div class="col s12 m10 offset-m1 offset-l1">
 					<div class="section"></div>
 					<div class="divider"></div>
 					<div class="section"></div>
@@ -122,7 +148,7 @@
 				<div class="col s12 m12 l10 offset-l1">
 					<div class="part-row col s12 no-pad">
 					<div class="col s12 no-pad center-align">
-						<div class="col s12 left-align"><h5>Ugrađeni dijelovi</h5></div>
+						<div class="col s12 center-align"><h5>Ugrađeni dijelovi</h5></div>
 						<div class="col s12"><div class="section"></div></div>					
 					</div>
 					@if (!empty($parts))
@@ -134,7 +160,7 @@
 					@endif
 					</div>
 				</div>
-				<div class="col s12">
+				<div class="col s12 m10 offset-m1 offset-l1">
 					<div class="section"></div>
 					<div class="divider"></div>
 					<div class="section"></div>
@@ -157,6 +183,7 @@
 				</div>
 				<div class="col s12 center-align">
 					<div class="section"></div>
+					<div class="section"></div>
 					<button class="button btn waves-effect waves-light ticket-save-button" type="submit" name="action"><i class="material-icons">save</i></button>
 				</div>
 			</div>
@@ -170,6 +197,7 @@
 		</div>
 		<div class="section"></div>
 	</div>
+</div>
 @include ('layouts.partials.errors')
 
 @endsection

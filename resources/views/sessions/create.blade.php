@@ -22,6 +22,10 @@
 			<div class="container center-align">
               <button class="btn waves-effect waves-light primary" type="submit" name="action">Prijavite se</button>
             </div>
+            <div class="section"></div>
+            <div class="container center-align pwd-reset">
+              <a href="/password/reset">Zaboravili ste lozinku?</a>
+            </div>
 		</div>
 		</div>
 	</form>

@@ -209,6 +209,10 @@ nav{
   top: 34px;
 }
 
+.pwd-reset a{
+  color: $primary-color;
+}
+
 @media #{$small-and-down} {
     // styles for small screens and down
 
@@ -258,6 +262,6 @@ nav{
     }
 
      .card .card-content{
-    padding: 18px;
+    padding: 24px;
   }
   }

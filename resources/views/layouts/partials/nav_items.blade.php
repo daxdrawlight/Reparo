@@ -3,7 +3,7 @@
 	@if (auth()->user()->role_id == 1)
 		{{-- <li><a href="/dashboard/settings"><i class="material-icons">settings</i></a></li> --}}
 		<li><a href="/register"><i class="material-icons">person_add</i></a></li>
-		<li><a href="/dashboard/users"><i class="material-icons">people</i></a></li>
+		<li><a href="/users"><i class="material-icons">people</i></a></li>
 		<li><a href="/tickets/new"><i class="material-icons">note_add</i></a></li>
 		<li><a href="/tickets"><i class="material-icons">description</i></a></li>
 	@endif
