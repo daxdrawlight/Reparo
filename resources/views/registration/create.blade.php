@@ -26,7 +26,6 @@
 			</div>
 			<div class="section"></div>
 			@include ('layouts.partials.errors')
-			<div class="section"></div>
 			<div class="container center-align">
 				<button class="btn waves-effect waves-light primary" type="submit" name="action">Izradi</button>
 			</div>

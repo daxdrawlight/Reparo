@@ -3,8 +3,8 @@
 $body-bg: #f5f8fa;
 
 // Reparo variables for Material CSS
-$primary-color: #6F72FF !default;
-$secondary-color: #FF6F00 !default;
+$primary-color: #495aff !default;
+$secondary-color: #495aff !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $input-border: $secondary-color !default;
 $input-focus-color: $input-border !default;
@@ -32,6 +32,6 @@ $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 //buttons
 $button-height: auto !default;
 $button-padding: 0.8rem 2rem !default;
-$button-radius: 2px !default;
+$button-radius: 30px !default;
 $button-large-height: $button-height !default;
 

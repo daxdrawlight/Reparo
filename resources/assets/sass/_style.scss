@@ -143,9 +143,18 @@ border-bottom: 1px solid $input-border;
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: $secondary-color;
   height: 56px;
   width: 100%;
+  background-color: $primary-color;
+}
+
+nav{
+  background-color: $primary-color;
+  background-image: -webkit-linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+  background-image: -moz-linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+  background-image: -o-linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+  background-image: linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+
 }
 
 .ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-download-button, .ticket-modal-button, .user-delete-button{
@@ -153,7 +162,7 @@ border-bottom: 1px solid $input-border;
   bottom: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
-  background-color: $secondary-color;
+  background-color: transparent;
   border-radius: 0px;
   padding: 14px 30px;
   max-height: 56px;
@@ -247,4 +256,8 @@ border-bottom: 1px solid $input-border;
     .ticket-nav, .ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-download-button, .ticket-modal-button{
       position: fixed;
     }
+
+     .card .card-content{
+    padding: 18px;
+  }
   }
