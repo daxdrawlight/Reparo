@@ -108,6 +108,12 @@ class TicketsController extends Controller
                 }
         }
 
+        if($ukupno == 0){
+            $provizija = 0;
+        }
+        else{
+            $provizija = $ukupno * 0.20;
+        }
         // unserialize the ticket parts data
 
         $parts = unserialize($ticket_parts->description);
@@ -129,7 +135,7 @@ class TicketsController extends Controller
 
         // load the ticket edit view and pass it all of the data
 
-        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses', 'author'));
+        return view('tickets.edit', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'statuses', 'author', 'provizija'));
     }
 
     public function update($id){

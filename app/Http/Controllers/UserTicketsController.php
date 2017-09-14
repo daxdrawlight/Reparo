@@ -17,7 +17,7 @@ use Auth;
 
 class UserTicketsController extends Controller
 {
-    public function index($id){
+    public function index(){
 
         if(auth()->user()->role_id == 2){
             $id = auth()->user()->id;

@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()){
-           return view('index'); 
+           return view('tickets.create'); 
         }
         else{
             return view('sessions.create');

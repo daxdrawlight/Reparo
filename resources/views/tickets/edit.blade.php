@@ -147,6 +147,14 @@
 						@endif
 					</div>
 				</div>
+				<div class="col s12 m12 l10 offset-l1">
+					<div class="col s6"><h5>PROVIZIJA</h5></div>
+					<div class="col s6">
+						@if(isset($provizija))
+							<input disabled type="text" class="validate center-align total-price" style="font-size: 24px;"name="provizija" value="{{ $provizija }} kn" autocomplete="off">
+						@endif
+					</div>
+				</div>
 				<div class="col s12 center-align">
 					<div class="section"></div>
 					<button class="button btn waves-effect waves-light ticket-save-button" type="submit" name="action"><i class="material-icons">save</i></button>

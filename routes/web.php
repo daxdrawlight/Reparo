@@ -13,6 +13,7 @@
 
 // Load the index view on the root page
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
@@ -92,6 +93,12 @@ Route::post('/login', 'SessionsController@store');
 
 // Log out user
 Route::get('/logout', 'SessionsController@destroy');
+
+// password reset
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.request');
 
 
 
