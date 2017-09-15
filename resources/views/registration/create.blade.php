@@ -17,11 +17,11 @@
 				<label for="email">Email</label>
 			</div>
 			<div class="input-field">
-				<input id="password" type="password" class="validate" name="password" required>
+				<input id="password" type="text" class="validate" name="password" required>
 				<label for="password">Lozinka</label>
 			</div>
 			<div class="input-field">
-				<input id="password_confirmation" type="password" class="validate" name="password_confirmation" required>
+				<input id="password_confirmation" type="text" class="validate" name="password_confirmation" required>
 				<label for="password_confirmation">Ponovi lozinku</label>
 			</div>
 			<div class="section"></div>

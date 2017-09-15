@@ -195,7 +195,8 @@ class TicketsController extends Controller
             'device_issue'      => request('issue'),
             'device_note'       => request('note'),
             'status'            => request('status'),
-            'total'             => $ticket_total
+            'total'             => $ticket_total,
+            'device_diagnostic' => request('diagnostic')
             ]);
 
         ExternalService::where('ticket_id', $id)->update([

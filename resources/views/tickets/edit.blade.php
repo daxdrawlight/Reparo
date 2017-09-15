@@ -32,6 +32,11 @@
 						<label for="name">Ime i prezime</label>
 					</div>
 					<div class="input-field">
+						<i class="material-icons prefix">phone</i>
+						<input id="phone" type="text" class="validate" name="phone" value="{{ $ticket->client_phone }}">
+						<label for="phone">Telefon</label>
+					</div>
+					<div class="input-field">
 						<i class="material-icons prefix">email</i>
 						<input id="email" type="email" class="validate" name="email" value="{{ $ticket->client_email }}">
 						<label for="email" data-error="Mora biti email">Email</label>
@@ -41,11 +46,7 @@
 						<input id="address" type="text" class="validate" name="address" value="{{ $ticket->client_address }}">
 						<label for="address">Adresa</label>
 					</div>
-					<div class="input-field">
-						<i class="material-icons prefix">phone</i>
-						<input id="phone" type="text" class="validate" name="phone" value="{{ $ticket->client_phone }}">
-						<label for="phone">Telefon</label>
-					</div>
+					
 				</div>
 				
 				{{-- Device information --}}
@@ -79,36 +80,26 @@
   					</div>
 					<div class="section"></div>
 				</div>
+					<div class="input-field col s12">
+						<input id="diagnostic" type="text" class="validate" name="diagnostic" value="{{ $ticket->device_diagnostic }}">
+						<label for="diagnostic">Dijagnostika</label>
+					</div>
+
+					<div class="input-field col s12 m6">
+						<input type="text" class="validate" name="outside" value="@if(isset($outside->name)){{$outside->name}}@endif" autocomplete="off">
+						<label for="outside">Vanjski serviser</label>				
+					</div>
+					<div class="input-field col s12 m3">
+						<input type="text" class="datepicker" name="start" value="@if(isset($outside->start)){{$outside->start}}@endif" autocomplete="off">
+						<label for="start">Od</label>				
+					</div>
+					<div class="input-field col s12 m3">
+						<input type="text" class="datepicker" name="end" value="@if(isset($outside->end)){{$outside->end}}@endif" autocomplete="off">
+						<label for="end">Do</label>				
+					</div>
 			</div>
 			</div>
 			{{-- Advanced details section --}}
-			<div class="row">
-				<div class="col s12 m10 offset-m1 offset-l1">
-						<div class="divider"></div>
-						<div class="section"></div>
-				</div>
-					<div class="col s12 m10 offset-l1 offset-m1">
-						<div class="col s12 no-pad">
-							<div class="col s12 no-pad center-align">							
-								<div class="col s12 center-align"><h5>Vanjski servis</h5></div>
-								<div class="col s12"><div class="section"></div></div>
-
-								<div class="input-field col s12 m6">
-									<input type="text" class="validate" name="outside" value="@if(isset($outside->name)){{$outside->name}}@endif" autocomplete="off">
-									<label for="outside">Vanjski serviser</label>				
-								</div>
-								<div class="input-field col s12 m3">
-									<input type="text" class="datepicker" name="start" value="@if(isset($outside->start)){{$outside->start}}@endif" autocomplete="off">
-									<label for="start">Od</label>				
-								</div>
-								<div class="input-field col s12 m3">
-									<input type="text" class="datepicker" name="end" value="@if(isset($outside->end)){{$outside->end}}@endif" autocomplete="off">
-									<label for="end">Do</label>				
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			<div class="row">
 
 				{{-- Work information --}}
@@ -119,10 +110,10 @@
 				</div>
 				<div class="col s12 m12 l10 offset-l1">
 					<div class="work-row col s12 no-pad">
-					<div class="col s12 no-pad center-align">							
+					{{-- <div class="col s12 no-pad center-align">							
 						<div class="col s12 center-align"><h5>Utrošeno radno vrijeme</h5></div>
 						<div class="col s12"><div class="section"></div></div>								
-					</div>
+					</div> --}}
 					@if (!empty($works))
 						@foreach ($works as $key => $work)
 							@include ('tickets.work')
@@ -147,10 +138,10 @@
 				</div>
 				<div class="col s12 m12 l10 offset-l1">
 					<div class="part-row col s12 no-pad">
-					<div class="col s12 no-pad center-align">
+					{{-- <div class="col s12 no-pad center-align">
 						<div class="col s12 center-align"><h5>Ugrađeni dijelovi</h5></div>
 						<div class="col s12"><div class="section"></div></div>					
-					</div>
+					</div> --}}
 					@if (!empty($parts))
 						@foreach ($parts as $key => $part)
 							@include ('tickets.part')
@@ -182,8 +173,8 @@
 					</div>
 				</div>
 				<div class="col s12 center-align">
-					<div class="section"></div>
-					<div class="section"></div>
+					{{-- <div class="section"></div> --}}
+					{{-- <div class="section"></div> --}}
 					<button class="button btn waves-effect waves-light ticket-save-button" type="submit" name="action"><i class="material-icons">save</i></button>
 				</div>
 			</div>

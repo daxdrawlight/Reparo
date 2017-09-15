@@ -31,6 +31,6 @@ class RegistrationController extends Controller
     	// auth()->login($user);
 
     	// Redirect user to home page
-    	return redirect('/dashboard/users');
+    	return redirect('/users');
     }
 }

@@ -20,6 +20,11 @@
 						<label for="name">Ime i prezime</label>
 					</div>
 					<div class="input-field">
+						<i class="material-icons prefix">phone</i>
+						<input id="phone" type="text" class="validate" name="phone" value="{{ old('phone') }}">
+						<label for="phone">Telefon</label>
+					</div>
+					<div class="input-field">
 						<i class="material-icons prefix">email</i>
 						<input id="email" type="email" class="validate" name="email" value="{{ old('email') }}">
 						<label for="email" data-error="Mora biti email">Email</label>
@@ -29,11 +34,7 @@
 						<input id="address" type="text" class="validate" name="address" value="{{ old('address') }}">
 						<label for="address">Adresa</label>
 					</div>
-					<div class="input-field">
-						<i class="material-icons prefix">phone</i>
-						<input id="phone" type="text" class="validate" name="phone" value="{{ old('phone') }}">
-						<label for="phone">Telefon</label>
-					</div>
+					
 				</div>
 				
 				{{-- Device information --}}
