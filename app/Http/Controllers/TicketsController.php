@@ -20,7 +20,7 @@ class TicketsController extends Controller
 {
     public function index()
     {
-    	$tickets = Ticket::latest()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name', 'users.fullname')->get();
+    	$tickets = Ticket::latest()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name', 'users.fullname')->simplePaginate(15);
     	return view('tickets.index', compact('tickets'));
     }
 
@@ -78,11 +78,13 @@ class TicketsController extends Controller
             'price'             => serialize(array())
             ]);
 
-        \Mail::to('info@computer-centar.com')->send(new NewTicket($random_string));
+        \Mail::to('computer.centar.servis@gmail.com')->send(new NewTicket($random_string));
         if(auth()->user()->role_id == 2){
+            flash('Nalog kreiran');
             return redirect('/user/ticket/'.$random_string);
         }
         else{
+            flash('Nalog kreiran');
     	   return redirect('/tickets/edit/'.$random_string);
         }   
     }
@@ -230,7 +232,12 @@ class TicketsController extends Controller
                 \Mail::to(request('email'))->send(new UpdateTicket($mail_data));
             }
         }
-         return redirect()->back();
+
+        //session()->flash('message', 'Spremljeno.');
+
+        flash('Izmjene spremljene');
+
+        return redirect()->back();
     }
 
     public function destroy($id){
@@ -238,6 +245,7 @@ class TicketsController extends Controller
         TicketWorkRecord::where('ticket_id', $id)->delete();
         TicketPartRecord::where('ticket_id', $id)->delete();
 
+        flash('Nalog izbrisan');
         return redirect('/tickets');
     }
 

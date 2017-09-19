@@ -7,5 +7,6 @@
 				@include ('tickets.ticket')
 			@endforeach
 		</ul>
-	</div>
+</div>
+{{ $tickets->links() }}
 @endsection

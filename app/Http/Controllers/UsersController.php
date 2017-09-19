@@ -38,7 +38,7 @@ class UsersController extends Controller
             'phone'     	=> request('phone'),
             'role_id'      	=> $role
             ]);
-
+        flash('Izmjene spremljene');
     	return redirect()->back();
     }
 
@@ -50,6 +50,7 @@ class UsersController extends Controller
     			]);
     	}
         User::where('id', $id)->delete();
+        flash('Korisnik obrisan');
         return redirect('/users');
     }
 }

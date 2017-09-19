@@ -23,14 +23,14 @@ class UserTicketsController extends Controller
             $id = auth()->user()->id;
         }
 
-    	$tickets = User::find($id)->tickets()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name', 'users.fullname')->get();
+    	$tickets = User::find($id)->tickets()->latest()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name', 'users.fullname')->simplePaginate(15);
 
     		return view('tickets.index', compact('tickets'));
     }
 
     public function adminIndex($id){
 
-        $tickets = User::find($id)->tickets()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name', 'users.fullname')->get();
+        $tickets = User::find($id)->tickets()->latest()->join('ticket_statuses', 'tickets.status', '=', 'ticket_statuses.id')->join('users', 'tickets.user_id', '=', 'users.id')->select('tickets.*', 'ticket_statuses.status', 'ticket_statuses.icon', 'users.name', 'users.fullname')->simplePaginate(15);
 
             return view('tickets.index', compact('tickets'));
     }
@@ -98,7 +98,7 @@ class UserTicketsController extends Controller
             'device_issue'      => request('issue'),
             'device_note'       => request('note'),
             ]);
-
-         return redirect()->back();
+        
+            return redirect()->back();
     }
 }

@@ -74,6 +74,10 @@
   }
 
   .collapsible-header i{
+    color: $secondary-color;
+  }
+
+  .collapsible-header i{
     margin-right: 0;
   }
 
@@ -151,10 +155,10 @@ border-bottom: 1px solid $input-border;
 
 nav{
   background-color: $primary-color;
-  background-image: -webkit-linear-gradient(90deg, #0acffe 0%, #495aff 100%);
-  background-image: -moz-linear-gradient(90deg, #0acffe 0%, #495aff 100%);
-  background-image: -o-linear-gradient(90deg, #0acffe 0%, #495aff 100%);
-  background-image: linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+  // background-image: -webkit-linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+  // background-image: -moz-linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+  // background-image: -o-linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+  // background-image: linear-gradient(90deg, #0acffe 0%, #495aff 100%);
 
 }
 
@@ -214,6 +218,29 @@ nav{
   color: $primary-color;
 }
 
+.pagination li, .pagination li a {
+  color: #fff;
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 0 10px;
+  line-height: 30px;
+}
+
+.pagination li a {
+  color: #444;
+}
+
+.toast{
+  background-color: $secondary-color;
+  display: none;
+  min-height: 1px;
+  margin-top: 0;
+  top:0;
+}
+#toast-container{
+  max-height: 48px;
+}
+
 @media #{$small-and-down} {
     // styles for small screens and down
 
@@ -264,5 +291,13 @@ nav{
 
      .card .card-content{
     padding: 24px;
+  }
+
+  #toast-container{
+    top: 56px;
+    position: absolute;
+  }
+  #toast-container .toast{
+    border-radius: 0px;
   }
   }

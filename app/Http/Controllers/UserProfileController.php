@@ -28,6 +28,7 @@ class UserProfileController extends Controller
             'phone'     	=> request('phone')
             ]);
 
+        flash('Izmjene spremljene');
     	return redirect()->back();
     }
 }

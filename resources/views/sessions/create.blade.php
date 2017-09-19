@@ -9,11 +9,11 @@
 			<h4 class="center-align">Prijava</h4>
 			<div class="section"></div>
 			<div class="input-field">
-				<input id="email" type="email" class="validate" name="email" value="{{ old('email') }}"required>
+				<input id="email" type="email" class="validate" name="email" value="{{ old('email') }}" autofill required>
 				<label for="email">Email</label>
 			</div>
 			<div class="input-field">
-				<input id="password" type="password" class="validate" name="password" required>
+				<input id="password" type="password" class="validate" name="password" autofill required>
 				<label for="password">Lozinka</label>
 			</div>
 			<div class="section"></div>

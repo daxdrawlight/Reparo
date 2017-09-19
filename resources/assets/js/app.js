@@ -61,7 +61,10 @@ $(document).on('click', '.add-part-btn', function(e)
         e.preventDefault();
         return false;
     });
-
+$(document).ready(function(){
+  $('div.toast').not('.alert-important').fadeIn(350).delay(3000).fadeOut(350);
+  $('div#toast-container').delay(3350).fadeOut(350);
+});
 
 // $(document).on('click', '.add-btn', function(e)
 //     {
