@@ -31,6 +31,7 @@ class RegistrationController extends Controller
     	// auth()->login($user);
 
     	// Redirect user to home page
+        flash('Korisnik kreiran');
     	return redirect('/users');
     }
 }

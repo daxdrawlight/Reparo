@@ -47,7 +47,7 @@
 			</div>
 			<div class="col s2">
 				<div class="col s12">
-					<a href="/user/edit/{{ $user->id }}"><i class="material-icons right">edit</i></a>					
+					<a href="/user/edit/{{ $user->id }}"><i class="material-icons right">border_color</i></a>					
 				</div>
 			</div>
 		</div>

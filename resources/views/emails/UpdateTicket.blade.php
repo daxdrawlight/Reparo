@@ -102,7 +102,7 @@
 
       <!-- HIDDEN PREHEADER TEXT -->
       <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
-          Status: $estatus
+          Status: {{$mail_data['status']}}
       </div>
 
       <!-- HEADER -->
@@ -164,42 +164,40 @@
 
                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-                                  <tr>
-                                      <td align="center">
-                                          <!-- BULLETPROOF BUTTON -->
-                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                              <tr>
-                                                  <td align="center" style="padding-top: 25px;" class="padding">
-                                                      <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
-                                                          {{-- <tr>
-                                                              <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="https://computer-centar.com/provjera?action=check-nalog&serial=$title" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">Provjeri Status</a></td>
-                                                          </tr> --}}
-                                                          <tr>
-                                                              <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                                                                &nbsp;&nbsp;
-                                                              </td>
-                                                          </tr>
-                                                          <tr>
-                                                              <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                                                                &nbsp;&nbsp;
-                                                              </td>
-                                                          </tr>
-                                                          <tr>
-                                                              <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                                                                  Vozišće 5, 51216, Viškovo
-                                                                  <br>
-                                                                  <a href="https://computer-centar.com" target="_blank" style="color: #666666;">Computer Centar</a>
-                                                                  <span style="font-family: Arial, sans-serif; font-size: 12px; color: #444444;text-decoration: none;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                                                                  express-info@ri.t-com.hr
-                                                              </td>
-                                                          </tr>
-                                                      </table>
-                                                  </td>
-                                              </tr>
-                                          </table>
-                                      </td>
-                                  </tr>
-                              </table>
+                            <tr>
+                                <td align="center">
+                                    <!-- BULLETPROOF BUTTON -->
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="center" style="padding-top: 25px;" class="padding">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            computer-centar.com | Vozišće 5, 51216, Viškovo
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
                           </td>
                       </tr>
                   </table>

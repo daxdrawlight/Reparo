@@ -174,23 +174,26 @@
                                                     <tr>
                                                         <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="{{ url('/') }}/tickets/edit/{{$random_string}}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">Pogledaj nalog</a></td>
                                                     </tr>
+                                                </table>
+                                                <table>
                                                     <tr>
-                                                        <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                                                          &nbsp;&nbsp;
+                                                        <td>
+                                                            &nbsp;
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                                                          &nbsp;&nbsp;
+                                                        <td>
+                                                            &nbsp;
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                                                            Vozišće 5, 51216, Viškovo
-                                                            <br>
-                                                            <a href="https://computer-centar.com" target="_blank" style="color: #666666;">Computer Centar</a>
-                                                            <span style="font-family: Arial, sans-serif; font-size: 12px; color: #444444;text-decoration: none;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                                                            express-info@ri.t-com.hr
+                                                        <td>
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            computer-centar.com | Vozišće 5, 51216, Viškovo
                                                         </td>
                                                     </tr>
                                                 </table>

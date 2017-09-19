@@ -48,7 +48,7 @@
 					@if (auth()->user()->role_id == 2)
 						<a href="/user/ticket/{{ $ticket->serial }}"><i class="material-icons right">edit</i></a>
 					@else
-						<a href="/tickets/edit/{{ $ticket->serial }}"><i class="material-icons right">edit</i></a>
+						<a href="/tickets/edit/{{ $ticket->serial }}"><i class="material-icons right">border_color</i></a>
 					@endif					
 				</div>
 			</div>

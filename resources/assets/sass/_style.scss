@@ -100,10 +100,10 @@
   }
 
 .z-depth-1 {
-  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
 .z-depth-1-half {
-  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
 
 .background{
@@ -164,11 +164,11 @@ nav{
 
 .ticket-save-button, .ticket-delete-button, .ticket-print-button, .ticket-download-button, .ticket-modal-button, .user-delete-button{
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
   background-color: transparent;
-  border-radius: 0px;
+  border-radius: 0;
   padding: 14px 30px;
   max-height: 56px;
 }
@@ -188,11 +188,11 @@ nav{
 }
 
 .ticket-delete-button, .user-delete-button{
-  left: 0px;
+  left: 0;
 }
 
 .ticket-print-button{
-  right: 0px;
+  right: 0;
 }
 
 .ticket-download-button{
@@ -200,7 +200,7 @@ nav{
 }
 
 .sp-dl-btn{
-  left: 0px;
+  left: 0;
   max-width: 80px;
 }
 
@@ -235,7 +235,7 @@ nav{
   display: none;
   min-height: 1px;
   margin-top: 0;
-  top:0;
+  top: 0;
 }
 #toast-container{
   max-height: 48px;
@@ -298,6 +298,6 @@ nav{
     position: absolute;
   }
   #toast-container .toast{
-    border-radius: 0px;
+    border-radius: 0;
   }
   }
