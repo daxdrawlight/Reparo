@@ -3,6 +3,7 @@
     <head>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}"  media="screen,projection"/>
       <!--Let browser know website is optimized for mobile-->

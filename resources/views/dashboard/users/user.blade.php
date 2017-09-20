@@ -33,16 +33,16 @@
 			@endif
 			@if (!empty($user->address))			
 					<div class="col s12 inline-flex truncate ticket-details">
-						<i class="tiny material-icons">location_on</i><span> &nbsp;&nbsp;{{ $user->address }}
+						<i class="tiny material-icons">location_on</i>&nbsp;&nbsp;{{ $user->address }}
 					</div>
 			@endif
 			@if (!empty($user->phone))
 				<div class="col s12 inline-flex truncate ticket-details">
-					<i class="tiny material-icons">phone</i><span> &nbsp;&nbsp;{{ $user->phone }}
+					<i class="tiny material-icons">phone</i>&nbsp;&nbsp;{{ $user->phone }}
 				</div>
 			@endif
 			<div class="col s12 inline-flex truncate ticket-details">
-					<i class="tiny material-icons">list</i><span> &nbsp;&nbsp; <a href="/user/{{ $user->id }}/tickets/">Lista naloga</a>
+					<i class="tiny material-icons">list</i>&nbsp;&nbsp; <a href="/user/{{ $user->id }}/tickets/">Lista naloga</a>
 				</div>
 			</div>
 			<div class="col s2">

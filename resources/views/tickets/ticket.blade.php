@@ -29,7 +29,7 @@
 					<i class="tiny material-icons">title</i>&nbsp;&nbsp;{{ $ticket->serial }}
 				</div>
 				<div class="col s12 inline-flex truncate ticket-details">
-					<i class="tiny material-icons">event</i><span> &nbsp;&nbsp;{{ $ticket->created_at->format('d.m.Y') }}
+					<i class="tiny material-icons">event</i>&nbsp;&nbsp;{{ $ticket->created_at->format('d.m.Y') }}
 				</div>			
 				{{-- <div class="col s12 inline-flex truncate ticket-details">
 					<i class="tiny material-icons">person</i>&nbsp;&nbsp;{{ $ticket->client_name }}
@@ -39,14 +39,14 @@
 				</div> --}}
 				@if ($ticket->device_note)
 				<div class="col s12 inline-flex truncate ticket-details">
-					<i class="tiny material-icons">report_problem</i><span> &nbsp;&nbsp;{{ $ticket->device_note }}
+					<i class="tiny material-icons">report_problem</i>&nbsp;&nbsp;{{ $ticket->device_note }}
 				</div>
 				@endif
 			</div>
 			<div class="col s2">
 				<div class="col s12">
 					@if (auth()->user()->role_id == 2)
-						<a href="/user/ticket/{{ $ticket->serial }}"><i class="material-icons right">edit</i></a>
+						<a href="/user/ticket/{{ $ticket->serial }}"><i class="material-icons right">border_color</i></a>
 					@else
 						<a href="/tickets/edit/{{ $ticket->serial }}"><i class="material-icons right">border_color</i></a>
 					@endif					

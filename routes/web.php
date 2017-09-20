@@ -14,6 +14,14 @@
 // Load the index view on the root page
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
+Route::get('/status', 'StatusController@index');
+Route::post('/status', 'StatusController@create');
+
+	// create pdf
+	Route::get('/tickets/download/{id}', 'TicketsController@makePdf');
+
+	// print pdf
+	Route::get('/tickets/print/{id}', 'TicketsController@printPdf');
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
@@ -62,12 +70,6 @@ Route::group(['middleware' => 'App\Http\Middleware\UserMiddleware'], function()
 
 	// Submit a new ticket
 	Route::post('/tickets', 'TicketsController@store');
-
-	// create pdf
-	Route::get('/tickets/download/{id}', 'TicketsController@makePdf');
-
-	// print pdf
-	Route::get('/tickets/print/{id}', 'TicketsController@printPdf');
 
 	// View selected user tickets
 	Route::get('/user/tickets', 'UserTicketsController@index');
