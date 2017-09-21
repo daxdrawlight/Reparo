@@ -12,8 +12,8 @@
 		<div class="col s12 m10"><h5 class="center-align">{{ $ticket->serial }}</h5></div>
 		<div class="col s12 m10 offset-m1 offset-l1">
 			<div class="section"></div>
-			<div class="col s6 left-align"><i class="tiny material-icons">location_on</i><span>@if(isset($author->fullname)){{ $author->fullname }}@else{{ $author->name }}@endif</div>
-			<div class="col s6 right-align"><i class="tiny material-icons">event</i><span> {{ $ticket->created_at->format('d.m.Y') }}</div>
+			<div class="col s6 left-align"><span>@if(isset($author->fullname)){{ $author->fullname }}@else{{ $author->name }}@endif</div>
+			<div class="col s6 right-align"><span>{{ $ticket->created_at->format('d.m.Y') }}</div>
 		</div>
 		<div class="col s12 m1"></div>
 		</div>
@@ -23,7 +23,6 @@
 			<div class="row">
 			<div class="col s12 m10 offset-l1 offset-m1">
 				{{-- Client information --}}
-
 				<div class="col s12 l6">
 					<h5 class="center-align">Stranka</h5>
 					<div class="section"></div>
@@ -46,12 +45,9 @@
 						<i class="material-icons prefix">home</i>
 						<input id="address" type="text" class="validate" name="address" value="{{ $ticket->client_address }}">
 						<label for="address">Adresa</label>
-					</div>
-					
-				</div>
-				
-				{{-- Device information --}}
-				
+					</div>					
+				</div>				
+				{{-- Device information --}}				
 				<div class="col s12 l6">
 					<h5 class="center-align">Uređaj</h5>
 					<div class="section"></div>

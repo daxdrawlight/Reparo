@@ -170,6 +170,11 @@
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td align="center" style="padding-top: 25px;" class="padding">
+                                                <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                    <tr>
+                                                        <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="{{ url('/') }}/status/{{$mail_data['ticket']}}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">Pogledaj nalog</a></td>
+                                                    </tr>
+                                                </table>
                                                 <table>
                                                     <tr>
                                                         <td>

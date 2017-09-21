@@ -6,8 +6,8 @@
 		<div class="row">
 		<div class="col s12"><h4 class="center-align">{{ $ticket->serial }}</h4></div>
 		<div class="col s12 m10 offset-m1 offset-l1">
-			<div class="col s6 left-align"><i class="tiny material-icons">location_on</i><span>@if(isset($author->fullname)){{ $author->fullname }}@else{{ $author->name }}@endif</div>
-			<div class="col s6 right-align"><i class="tiny material-icons">event</i><span> {{ $ticket->created_at->format('d.m.Y') }}</div>
+			<div class="col s6 left-align"><span>@if(isset($author->fullname)){{ $author->fullname }}@else{{ $author->name }}@endif</div>
+			<div class="col s6 right-align"><span> {{ $ticket->created_at->format('d.m.Y') }}</div>
 		</div>
 		<div class="col s12 m1"></div>
 		</div>

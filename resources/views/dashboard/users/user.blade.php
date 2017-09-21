@@ -26,22 +26,22 @@
 	<div class="collapsible-body">
 		<div class="full-width inline-flex">
 			<div class="col s10 ">
-			@if (!empty($user->fullname))
+				@if (!empty($user->fullname))
 					<div class="col s12 inline-flex truncate">
 						<i class="tiny material-icons">title</i>&nbsp;&nbsp;{{ $user->fullname }}
 					</div>
-			@endif
-			@if (!empty($user->address))			
+				@endif
+				@if (!empty($user->address))			
 					<div class="col s12 inline-flex truncate ticket-details">
 						<i class="tiny material-icons">location_on</i>&nbsp;&nbsp;{{ $user->address }}
 					</div>
-			@endif
-			@if (!empty($user->phone))
+				@endif
+				@if (!empty($user->phone))
+					<div class="col s12 inline-flex truncate ticket-details">
+						<i class="tiny material-icons">phone</i>&nbsp;&nbsp;{{ $user->phone }}
+					</div>
+				@endif
 				<div class="col s12 inline-flex truncate ticket-details">
-					<i class="tiny material-icons">phone</i>&nbsp;&nbsp;{{ $user->phone }}
-				</div>
-			@endif
-			<div class="col s12 inline-flex truncate ticket-details">
 					<i class="tiny material-icons">list</i>&nbsp;&nbsp; <a href="/user/{{ $user->id }}/tickets/">Lista naloga</a>
 				</div>
 			</div>

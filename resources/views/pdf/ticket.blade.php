@@ -62,7 +62,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 body {
   font-family: DejaVu Sans;
-  font-size: 16px;
+  font-size: 18px;
   margin: 0;
   padding: 5%;
   color: #555555;
@@ -324,7 +324,7 @@ footer .end {
 				<div class="data right">
 					<div class="title">{{$ticket->serial}}</div>
 					<div class="date">
-          Computer Centar Viškovo <br>
+          {{$author->fullname}} <br>
 					Prijava: {{ $ticket->created_at->format('d.m.Y') }} <br>
           Izdano: {{ date('d.m.Y') }}
 					</div>

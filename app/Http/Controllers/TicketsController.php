@@ -254,8 +254,10 @@ class TicketsController extends Controller
         // get the ticket data from the database
 
         $ticket = Ticket::where('serial', $id)->first();
+        $author = User::where('id', $ticket->user_id)->first();
         $ticket_works = TicketWorkRecord::where('ticket_id', $id)->first();
         $ticket_parts = TicketPartRecord::where('ticket_id', $id)->first();
+
 
         // unserialize the ticket work data
 
@@ -289,7 +291,7 @@ class TicketsController extends Controller
             }
         }
 
-        $pdf = PDF::loadView('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno'))->setPaper('a4', 'portrait')->setOptions(['dpi' => 150, 'defaultFont' => 'Arial', 'isRemoteEnabled' => true]);
+        $pdf = PDF::loadView('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'author'))->setPaper('a4', 'portrait')->setOptions(['dpi' => 150, 'defaultFont' => 'Arial', 'isRemoteEnabled' => true]);
         return $pdf->download($id.'.pdf');
     }
 
@@ -298,6 +300,7 @@ class TicketsController extends Controller
         // get the ticket data from the database
 
         $ticket = Ticket::where('serial', $id)->first();
+        $author = User::where('id', $ticket->user_id)->first();
         $ticket_works = TicketWorkRecord::where('ticket_id', $id)->first();
         $ticket_parts = TicketPartRecord::where('ticket_id', $id)->first();
 
@@ -333,7 +336,7 @@ class TicketsController extends Controller
             }
         }
 
-        $pdf = PDF::loadView('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno'))->setPaper('a4', 'portrait')->setOptions(['dpi' => 150, 'defaultFont' => 'Arial', 'isRemoteEnabled' => true]);
+        $pdf = PDF::loadView('pdf.ticket', compact('ticket', 'works', 'hours', 'pphs', 'work_totals', 'parts', 'serial', 'prices', 'ukupno', 'author'))->setPaper('a4', 'portrait')->setOptions(['dpi' => 150, 'defaultFont' => 'Arial', 'isRemoteEnabled' => true]);
         return $pdf->stream($id.".pdf", array("Attachment" => false));
     }
 }

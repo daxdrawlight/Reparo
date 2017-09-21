@@ -1,8 +1,8 @@
 @extends ('layouts.app')
 
 @section ('content')
-		<div class="card login-card">
-			<div class="card-content">
+	<div class="card login-card">
+		<div class="card-content">
 			<form method="POST" role="form" action="/profile">	
 				{{ csrf_field() }}
 				<h4 class="center-align">{{ $user->name }}</h4>
@@ -30,7 +30,7 @@
 				<div class="container center-align">
 	              	<button class="btn waves-effect waves-light primary" type="submit" name="action">Spremi</button>
 	            </div>
-	            </form>
-			</div>
+	        </form>
 		</div>
+	</div>
 @endsection

@@ -16,6 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 Route::get('/status', 'StatusController@index');
 Route::post('/status', 'StatusController@create');
+Route::get('/status/{id}', 'StatusController@check');
 
 	// create pdf
 	Route::get('/tickets/download/{id}', 'TicketsController@makePdf');

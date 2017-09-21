@@ -65,6 +65,10 @@ class UserTicketsController extends Controller
         }
         else{
         	$provizija = $ukupno * 0.20;
+            // za special snowflake Bobo
+            if($ticket->user_id == 20){
+                $provizija = $ukupno * 0.25;
+            }
         }
 
         // get all ticket statuses from the database
