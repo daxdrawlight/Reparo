@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserRole;
+use App\Ticket;
+use Carbon\Carbon;
 
 class UsersController extends Controller
 {
@@ -16,7 +18,23 @@ class UsersController extends Controller
     public function edit($id){
     	$user = User::where('id', $id)->first();
     	$roles = UserRole::all();
-    	return view('dashboard.users.edit', compact('user', 'roles'));
+        $percent = $user->provision / 100;
+
+        $tickets = Ticket::where('user_id', $id)->get();
+        $tickets = $tickets->sortByDesc('finished_at');
+        $tickets = $tickets->groupBy(function($item){
+            return Carbon::parse($item->finished_at)->format('m.Y');
+        });
+        $month_totals = array();
+        $grand_total = 0;
+        foreach ($tickets as $month => $ticket){
+            foreach($ticket as $value => $total){
+                $grand_total += $tickets[$month][$value]->work_total;
+            }
+            $month_totals[$month] = $grand_total * $percent;
+            $grand_total = 0;
+        }
+    	return view('dashboard.users.edit', compact('user', 'roles', 'month_totals'));
     }
 
     public function update($id){
@@ -36,7 +54,8 @@ class UsersController extends Controller
             'fullname'      => request('fullname'),
             'address'      	=> request('address'),
             'phone'     	=> request('phone'),
-            'role_id'      	=> $role
+            'role_id'      	=> $role,
+            'provision'     => request('provision')
             ]);
         flash('Izmjene spremljene');
     	return redirect()->back();

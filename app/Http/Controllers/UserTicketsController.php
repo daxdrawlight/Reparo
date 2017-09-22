@@ -54,6 +54,7 @@ class UserTicketsController extends Controller
         // add work cost to the total ticket cost
 
         $ukupno = 0;
+        $percent = $author->provision / 100;
         if(!empty($work_totals))
         {
             foreach($work_totals as $total){
@@ -64,11 +65,7 @@ class UserTicketsController extends Controller
         	$provizija = 0;
         }
         else{
-        	$provizija = $ukupno * 0.20;
-            // za special snowflake Bobo
-            if($ticket->user_id == 20){
-                $provizija = $ukupno * 0.25;
-            }
+        	$provizija = $ukupno * $percent;
         }
 
         // get all ticket statuses from the database

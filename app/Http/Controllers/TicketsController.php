@@ -109,19 +109,20 @@ class TicketsController extends Controller
         // add work cost to the total ticket cost
 
         $ukupno = 0;
+        $percent = $author->provision / 100;
         if(!empty($work_totals))
         {
             foreach($work_totals as $total){
                     $ukupno += $total;
                 }
         }
-
         if($ukupno == 0){
             $provizija = 0;
         }
         else{
-            $provizija = $ukupno * 0.20;
+            $provizija = $ukupno * $percent;
         }
+
         // unserialize the ticket parts data
 
         $parts = unserialize($ticket_parts->description);
@@ -197,9 +198,16 @@ class TicketsController extends Controller
             'device_issue'      => request('issue'),
             'device_note'       => request('note'),
             'status'            => request('status'),
+            'work_total'        => $work_total,
             'total'             => $ticket_total,
             'device_diagnostic' => request('diagnostic')
             ]);
+        
+        if($current_status != $new_status && $new_status == 4){
+            Ticket::where('serial', $id)->update([
+                'finished_at'       => date('Y-m-d H:i:s')
+            ]);
+        }
 
         ExternalService::where('ticket_id', $id)->update([
             'name'          => request('outside'),
