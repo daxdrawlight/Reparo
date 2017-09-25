@@ -111,6 +111,16 @@
   height: 64px;
 }
 
+.search-box{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1.5;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
 /* Text inputs */
 
 input:not([type]),

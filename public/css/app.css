@@ -9976,21 +9976,31 @@ nav,
 .dropdown-content,
 .collapsible,
 .side-nav {
-  -webkit-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
 
 .z-depth-1-half,
 .btn:hover,
 .btn-large:hover,
 .btn-floating:hover {
-  -webkit-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
 
 .background {
   background-color: #003F6C;
   height: 64px;
+}
+
+.search-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1.5;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
 }
 
 /* Text inputs */
@@ -10047,11 +10057,11 @@ nav {
 .ticket-modal-button,
 .user-delete-button {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
   background-color: transparent;
-  border-radius: 0px;
+  border-radius: 0;
   padding: 14px 30px;
   max-height: 56px;
 }
@@ -10072,11 +10082,11 @@ nav {
 
 .ticket-delete-button,
 .user-delete-button {
-  left: 0px;
+  left: 0;
 }
 
 .ticket-print-button {
-  right: 0px;
+  right: 0;
 }
 
 .ticket-download-button {
@@ -10084,7 +10094,7 @@ nav {
 }
 
 .sp-dl-btn {
-  left: 0px;
+  left: 0;
   max-width: 80px;
 }
 
@@ -10189,7 +10199,7 @@ nav {
   }
 
   #toast-container .toast {
-    border-radius: 0px;
+    border-radius: 0;
   }
 }
 

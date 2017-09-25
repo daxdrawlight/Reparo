@@ -17,6 +17,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/status', 'StatusController@index');
 Route::post('/status', 'StatusController@create');
 Route::get('/status/{id}', 'StatusController@check');
+Route::any('/search', 'TicketSearchController@index');
 
 	// create pdf
 	Route::get('/tickets/download/{id}', 'TicketsController@makePdf');
